@@ -83,3 +83,5 @@ android/generated
 
 *storybook.log
 storybook-static
+
+.npmrc
