@@ -31,7 +31,7 @@ export const GayaButtonComponent = ({
   // const themeUse = useTheme() as Theme
   const iconColor = disabled
     ? theme.button[type].color.disable.label
-    : theme.button[type].color.enable.label;
+    : theme.button[type].color[color ?? 'primary'].label;
 
   return (
     <GayaTouchableRipple
