@@ -1,7 +1,7 @@
 {
-  "name": "react-native-lib-builder-bob-story-1",
+  "name": "react-native-lib-builder-bob-story-2",
   "version": "0.3.0",
-  "description": "biblioteca-builder-whith-story-1",
+  "description": "biblioteca-builder-with-story-2",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
@@ -36,7 +36,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-native-lib-builder-bob-story-1-example",
+    "example": "yarn workspace react-native-lib-builder-bob-story-2-example",
     "test": "jest",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -53,14 +53,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vagnerzadoque/react-native-lib-builder-bob-story-1.git"
+    "url": "git+https://github.com/vagnerzadoque/react-native-lib-builder-bob-story-2.git"
   },
   "author": "Vagner Barbosa <vagner.zaham@gmail.com> (https://github.com/vagnerzadoque)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vagnerzadoque/react-native-lib-builder-bob-story-1/issues"
+    "url": "https://github.com/vagnerzadoque/react-native-lib-builder-bob-story-2/issues"
   },
-  "homepage": "https://github.com/vagnerzadoque/react-native-lib-builder-bob-story-1#readme",
+  "homepage": "https://github.com/vagnerzadoque/react-native-lib-builder-bob-story-2#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

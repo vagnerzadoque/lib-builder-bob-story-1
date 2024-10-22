@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-lib-builder-bob-story-1';
+import { multiply } from 'react-native-lib-builder-bob-story-2';
 
 export default function App() {
   const [result, setResult] = useState<number | undefined>();

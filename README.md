@@ -1,18 +1,18 @@
-# react-native-lib-builder-bob-story-1
+# react-native-lib-builder-bob-story-2
 
 biblioteca-builder-whith-story-1
 
 ## Installation
 
 ```sh
-npm install react-native-lib-builder-bob-story-1
+npm install react-native-lib-builder-bob-story-2
 ```
 
 ## Usage
 
 
 ```js
-import { multiply } from 'react-native-lib-builder-bob-story-1';
+import { multiply } from 'react-native-lib-builder-bob-story-2';
 
 // ...
 

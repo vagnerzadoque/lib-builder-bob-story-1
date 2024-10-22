@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "react-native-lib-builder-bob-story-1": ["./src/index"]
+      "react-native-lib-builder-bob-story-2": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
