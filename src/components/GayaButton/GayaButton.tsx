@@ -1,6 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { GayaButtonBase } from './GayaButtonBase';
-import { GayaButtonProps } from './GayaButton.props';
+import { withTheme } from 'styled-components/native';
+import { Icon } from '../GayaIcon/GayaIcon';
+import { LabelContainer, LabelText, Surface } from './GayaButton.styles';
+import { getSelectTheme } from './GayaButton.utils';
+import { GayaTouchableRipple } from '../GayaTouchableRipple/GayaTouchableRipple';
+import { GayaButtonBaseProps, GayaButtonProps } from './GayaButton.props';
 
 export const GayaButton = ({
   accessibilityHint,
@@ -11,35 +16,87 @@ export const GayaButton = ({
   textTransform,
   disabled = false,
   iconName,
-  color = 'primary',
-  iconPosition,
+  color,
+  iconPosition = 'right',
   onPress,
-  size = 'semiX',
-  testID = 'button',
+  size = 'medium',
+  testID = 'button-base',
   text,
-  type = 'contained',
   brand,
   mode,
-  ...rest
-}: GayaButtonProps) => (
-  <GayaButtonBase
-    accessibilityHint={accessibilityHint}
-    accessibilityLabel={accessibilityLabel}
-    accessibilityActions={accessibilityActions}
-    accessibilityState={accessibilityState}
-    onAccessibilityAction={onAccessibilityAction}
-    disabled={disabled}
-    textTransform={textTransform}
-    iconName={iconName}
-    color={color}
-    iconPosition={iconPosition}
-    onPress={onPress}
-    size={size}
-    brand={brand}
-    mode={mode}
-    testID={testID}
-    text={text}
-    type={type}
-    {...rest}
-  />
-);
+  theme,
+  type = 'contained',
+  textLabelStyle,
+}: GayaButtonProps) => {
+  // const themeUse = useTheme() as Theme
+  // const iconColor = disabled
+  //   ? theme.button[type].color.disable.label
+  //   : theme.button[type].color[color ?? 'primary'].label;
+
+  return (
+    <GayaTouchableRipple
+      color="highlight"
+      disabled={disabled}
+      hideOverflow
+      onPress={disabled ? () => ({}) : onPress}
+      style={{
+        borderRadius: getSelectTheme(brand, { theme , type, color })
+          ?.buttonBorderRadius,
+      }}
+    >
+      <Surface
+        onAccessibilityAction={onAccessibilityAction}
+        accessibilityActions={accessibilityActions}
+        accessibilityHint={accessibilityHint}
+        accessibilityLabel={accessibilityLabel}
+        accessibilityState={accessibilityState}
+        accessibilityRole="button"
+        disabled={disabled}
+        size={size}
+        brand={brand}
+        mode={mode}
+        color={color}
+        testID={testID}
+        type={type}
+      >
+        <LabelContainer iconPosition={iconPosition}>
+          <LabelText
+            textTransform={textTransform}
+            iconName={iconName}
+            iconPosition={iconPosition}
+            testID="button-label"
+            type={type}
+            brand={brand}
+            mode={mode}
+            color={color}
+            disabled={disabled}
+            style={textLabelStyle}
+          >
+            {text}
+          </LabelText>
+          {iconName && (
+            <Icon
+              accessibilityRole="imagebutton"
+              // style={{ color: iconColor }}
+              type={type}
+              color={color}
+              name={iconName}
+              disabled={disabled}
+              size="small"
+            />
+          )}
+        </LabelContainer>
+      </Surface>
+    </GayaTouchableRipple>
+  );
+};
+
+
+
+// export const GayaButtonBase: React.FC<GayaButtonProps> = withTheme(GayaButtonComponent);
+
+// export const GayaButtonBase = withTheme(
+//   GayaButtonComponent
+// ) as React.ForwardRefExoticComponent<
+//   GayaButtonProps & React.RefAttributes<any>
+// >;

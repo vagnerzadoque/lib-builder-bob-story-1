@@ -17,6 +17,7 @@ export interface GayaButtonBaseProps extends GayaButtonProps {
 }
 
 export interface GayaButtonProps extends AccessibilityButtonProps {
+  theme?: Theme;
   /**
    * A disabled button is unusable and un-clickable.
    * The disabled attribute can be set to keep a user from clicking on the button until some

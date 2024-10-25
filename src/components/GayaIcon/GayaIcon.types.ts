@@ -1,9 +1,14 @@
 import { IconName } from '@naturacosmeticos/natds-icons';
-import { Color, Size } from '@naturacosmeticos/natds-themes/react-native';
+import { Size } from '@naturacosmeticos/natds-themes/react-native';
 import { StyleProp, TextStyle } from 'react-native';
 import { Theme } from '../../common/theme';
 
-export type IconColors = keyof Color;
+export type IconColors =  | 'primary'
+| 'onPrimary'
+| 'secondary'
+| 'onSecondary'
+| 'neutral'
+| 'inverse';
 export type IconSizes = keyof Size;
 
 export interface IconProps {
@@ -48,4 +53,8 @@ export interface IconProps {
    *
    */
   style?: StyleProp<TextStyle>;
+
+  type?: 'contained' | 'outlined' | 'ghost' | 'tonal';
+
+  disabled?: boolean;
 }

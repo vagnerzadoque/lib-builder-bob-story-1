@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
+import { buildTheme } from '../../common/theme';
 // import { fn } from '@storybook/test';
 import { GayaButton } from './GayaButton';
-
+const theme = buildTheme('avon_v2', 'light')
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
   title: 'Example/GayaButton',
@@ -32,6 +32,8 @@ export const Primary: Story = {
     text: 'GayaButton',
     iconName: 'outlined-social-sparks',
     iconPosition: 'left',
+    theme: theme
+    
   
   },
 };

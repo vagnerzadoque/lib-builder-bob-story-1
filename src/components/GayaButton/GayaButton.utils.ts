@@ -32,20 +32,22 @@ export const getSelectTheme = (
       );
     }
   }
+  
 
-  return (
-    type &&
-    color && {
-      back: theme.button[type].color[color].background,
-      border: theme.button[type].color[color].border,
-      label: theme.button[type].color[color].label,
-      buttonBorderRadius: theme.button.borderRadius,
-      textransform: theme.button.textTransform as
-        | 'uppercase'
-        | 'lowercase'
-        | 'capitalize',
-    }
-  );
+    return (
+      type &&
+      color && {
+        back: theme?.button[type].color[color].background,
+        border: theme?.button[type].color[color].border,
+        label: theme?.button[type].color[color].label,
+        buttonBorderRadius: theme?.button.borderRadius,
+        textransform: theme?.button.textTransform as
+          | 'uppercase'
+          | 'lowercase'
+          | 'capitalize',
+      }
+    );
+  
 };
 
 export const getButtonStylesBySize = ({
@@ -80,29 +82,32 @@ export const getButtonStylesBySize = ({
     };
     return size && buttonSizesBrand[size];
   }
-  const buttonSizes = {
-    large: {
-      minHeight: theme.size.medium,
-      paddingHorizontal: theme.button.paddingX,
-    },
-    medium: {
-      minHeight: theme.size.medium,
-      paddingHorizontal: theme.button.paddingX,
-    },
-    semi: {
-      minHeight: theme.size.semi,
-      paddingHorizontal: theme.button.paddingX,
-    },
-    semiX: {
-      minHeight: theme.size.semiX,
-      paddingHorizontal: theme.button.paddingX,
-    },
-    small: {
-      minHeight: theme.size.semi,
-      paddingHorizontal: theme.button.paddingX,
-    },
-  };
-  return size && buttonSizes[size];
+
+
+    const buttonSizes = {
+      large: {
+        minHeight: theme?.size.medium,
+        paddingHorizontal: theme?.button.paddingX,
+      },
+      medium: {
+        minHeight: theme?.size.medium,
+        paddingHorizontal: theme?.button.paddingX,
+      },
+      semi: {
+        minHeight: theme?.size.semi,
+        paddingHorizontal: theme?.button.paddingX,
+      },
+      semiX: {
+        minHeight: theme?.size.semiX,
+        paddingHorizontal: theme?.button.paddingX,
+      },
+      small: {
+        minHeight: theme?.size.semi,
+        paddingHorizontal: theme?.button.paddingX,
+      },
+    };
+    return size && buttonSizes[size];
+  
 };
 
 export const getButtonShadowByType = ({
@@ -110,4 +115,4 @@ export const getButtonShadowByType = ({
   theme,
   type,
 }: Omit<SurfaceProps, 'size'>) =>
-  type === 'contained' && !disabled ? theme.elevation.none : { elevation: 0 };
+  type === 'contained' && !disabled ? ( theme ?theme.elevation.none: {elevation: 0}) : { elevation: 0 };

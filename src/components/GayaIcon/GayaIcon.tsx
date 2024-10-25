@@ -20,8 +20,8 @@ type IconStyleProps = {
 // }
 
 export const IconComponent = styled.Text<IconProps>(
-  ({ color = 'highlight', size = 'standard', theme }: IconStyleProps) => ({
-    color: theme.color[color],
+  ({ color = 'neutral', size = 'standard', type, disabled, theme }: IconStyleProps) => ({
+    color: disabled ? theme.button[type ?? 'contained'].color.disable.label : theme.button[type ?? 'contained'].color[color ?? 'primary'].label,
     fontFamily: 'natds-icons',
     fontSize: theme.size[size],
   })
@@ -39,11 +39,13 @@ export const Icon = ({
   accessibilityHint,
   accessibilityLabel,
   accessibilityRole = 'image',
-  color = 'highlight',
+  color = 'neutral',
   name = defaultIconName,
   testID = 'natds-icon',
   theme,
   size = 'standard',
+  disabled,
+  type,
   style,
 }: IconProps) => {
   const unicodeName = checkIconName(name);
@@ -56,6 +58,8 @@ export const Icon = ({
       accessibilityRole={accessibilityRole}
       color={color}
       size={size}
+      type={type}
+      disabled={disabled}
       style={style}
       testID={testID}
       theme={theme}

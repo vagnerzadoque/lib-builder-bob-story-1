@@ -10,7 +10,7 @@ import {
 } from './GayaButton.utils';
 
 export type ThemeTypes = {
-  theme: Theme;
+  theme?: Theme;
   textLabelStyle?: StyleProp<TextStyle>;
 };
 
@@ -112,7 +112,7 @@ export const Surface = styled.View<SurfaceProps>(
     alignContent: 'center',
     alignItems: 'center',
     background: disabled
-      ? theme.color.surfaceDisabled
+      ? theme?.color.surfaceDisabled
       : getSelectTheme(brand, {
           theme,
           type,
@@ -120,7 +120,7 @@ export const Surface = styled.View<SurfaceProps>(
           mode,
         })?.back,
     borderColor: disabled
-      ? theme.color.surfaceDisabled
+      ? theme?.color.surfaceDisabled
       : getSelectTheme(brand, {
           theme,
           type,
