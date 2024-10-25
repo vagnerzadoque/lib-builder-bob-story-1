@@ -1,6 +1,7 @@
 import { buildTheme } from '../../common/theme';
 import { BrandTypes } from '../../common/brandTypes';
-import { SurfaceProps, ThemeTypes } from './GayaButton.styles';
+import { SurfaceProps } from './GayaButton.styles';
+import { DefaultTheme } from 'styled-components/native';
 
 export const getSelectTheme = (
   brand: BrandTypes | undefined,
@@ -9,10 +10,13 @@ export const getSelectTheme = (
     type,
     color,
     mode,
-  }: Pick<SurfaceProps, 'type' | 'color' | 'mode'> & ThemeTypes
+  }: Pick<SurfaceProps, 'type' | 'color' | 'mode'> & {
+    theme: DefaultTheme;
+  }
 ) => {
   if (brand) {
     const colorTheme = buildTheme(brand, mode);
+
     let propBrandsColor = {};
     if (type && color) {
       propBrandsColor = {
@@ -20,7 +24,7 @@ export const getSelectTheme = (
         border: colorTheme.button[type].color[color].border,
         label: colorTheme.button[type].color[color].label,
         buttonBorderRadius: colorTheme.button.borderRadius,
-        textransform: colorTheme.button.textTransform as
+        textTransform: colorTheme.button.textTransform as
           | 'uppercase'
           | 'lowercase'
           | 'capitalize',
@@ -32,22 +36,20 @@ export const getSelectTheme = (
       );
     }
   }
-  
 
-    return (
-      type &&
-      color && {
-        back: theme?.button[type].color[color].background,
-        border: theme?.button[type].color[color].border,
-        label: theme?.button[type].color[color].label,
-        buttonBorderRadius: theme?.button.borderRadius,
-        textransform: theme?.button.textTransform as
-          | 'uppercase'
-          | 'lowercase'
-          | 'capitalize',
-      }
-    );
-  
+  return (
+    type &&
+    color && {
+      back: theme?.button[type].color[color].background,
+      border: theme?.button[type].color[color].border,
+      label: theme?.button[type].color[color].label,
+      buttonBorderRadius: theme?.button.borderRadius,
+      textransform: theme?.button.textTransform as
+        | 'uppercase'
+        | 'lowercase'
+        | 'capitalize',
+    }
+  );
 };
 
 export const getButtonStylesBySize = ({
@@ -55,7 +57,9 @@ export const getButtonStylesBySize = ({
   theme,
   brand,
   mode,
-}: Pick<SurfaceProps, 'size' | 'theme' | 'brand' | 'mode'>) => {
+}: Pick<SurfaceProps, 'size' | 'brand' | 'mode'> & {
+  theme: DefaultTheme;
+}) => {
   if (brand) {
     const colorThemeBrand = buildTheme(brand, mode);
     const buttonSizesBrand = {
@@ -83,36 +87,38 @@ export const getButtonStylesBySize = ({
     return size && buttonSizesBrand[size];
   }
 
-
-    const buttonSizes = {
-      large: {
-        minHeight: theme?.size.medium,
-        paddingHorizontal: theme?.button.paddingX,
-      },
-      medium: {
-        minHeight: theme?.size.medium,
-        paddingHorizontal: theme?.button.paddingX,
-      },
-      semi: {
-        minHeight: theme?.size.semi,
-        paddingHorizontal: theme?.button.paddingX,
-      },
-      semiX: {
-        minHeight: theme?.size.semiX,
-        paddingHorizontal: theme?.button.paddingX,
-      },
-      small: {
-        minHeight: theme?.size.semi,
-        paddingHorizontal: theme?.button.paddingX,
-      },
-    };
-    return size && buttonSizes[size];
-  
+  const buttonSizes = {
+    large: {
+      minHeight: theme?.size.medium,
+      paddingHorizontal: theme?.button.paddingX,
+    },
+    medium: {
+      minHeight: theme?.size.medium,
+      paddingHorizontal: theme?.button.paddingX,
+    },
+    semi: {
+      minHeight: theme?.size.semi,
+      paddingHorizontal: theme?.button.paddingX,
+    },
+    semiX: {
+      minHeight: theme?.size.semiX,
+      paddingHorizontal: theme?.button.paddingX,
+    },
+    small: {
+      minHeight: theme?.size.semi,
+      paddingHorizontal: theme?.button.paddingX,
+    },
+  };
+  return size && buttonSizes[size];
 };
 
 export const getButtonShadowByType = ({
   disabled,
   theme,
   type,
-}: Omit<SurfaceProps, 'size'>) =>
-  type === 'contained' && !disabled ? ( theme ?theme.elevation.none: {elevation: 0}) : { elevation: 0 };
+}: Omit<SurfaceProps, 'size'> & { theme: DefaultTheme }) =>
+  type === 'contained' && !disabled
+    ? theme
+      ? theme.elevation.none
+      : { elevation: 0 }
+    : { elevation: 0 };

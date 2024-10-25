@@ -1,7 +1,5 @@
 import styled from 'styled-components/native';
 import { StyleProp, TextStyle } from 'react-native';
-// import { Theme } from "../../common/theme";
-import { Theme } from '@naturacosmeticos/natds-themes/react-native';
 import { GayaButtonProps } from './GayaButton.props';
 import {
   getSelectTheme,
@@ -9,20 +7,15 @@ import {
   getButtonShadowByType,
 } from './GayaButton.utils';
 
-export type ThemeTypes = {
-  theme?: Theme;
-  textLabelStyle?: StyleProp<TextStyle>;
-};
-
 export type ILabelContainer = {
   iconPosition: 'left' | 'right';
-} & ThemeTypes;
+} & { textLabelStyle?: StyleProp<TextStyle> };
 
 export type SurfaceProps = Pick<
   GayaButtonProps,
   'type' | 'disabled' | 'size' | 'brand' | 'color' | 'mode'
-> &
-  ThemeTypes;
+> & { textLabelStyle?: StyleProp<TextStyle> };
+
 type LabelProps = Pick<
   GayaButtonProps,
   | 'iconName'
@@ -33,8 +26,7 @@ type LabelProps = Pick<
   | 'textTransform'
   | 'color'
   | 'mode'
-> &
-  ThemeTypes;
+> & { textLabelStyle?: StyleProp<TextStyle> };
 
 export const LabelContainer = styled.View<ILabelContainer>(
   ({ iconPosition }) => ({
@@ -42,17 +34,6 @@ export const LabelContainer = styled.View<ILabelContainer>(
     flexDirection: iconPosition === 'right' ? 'row' : 'row-reverse',
   })
 );
-
-// export const LabelText = styled.Text<LabelProps>`
-//     color: ${({ disabled, theme, type, color, mode, brand }) => disabled ? theme.color.onSurfaceDisabled : getSelectTheme(brand, {
-//     theme, type, color, mode
-//     })?.label};
-
-//     text-transform: ${({ textTransform, theme, type, color, mode, brand }) => textTransform || getSelectTheme(brand, {
-//     theme, type, color, mode
-//     })?.textransform};
-
-//   `
 
 export const LabelText = styled.Text<LabelProps>(
   ({
@@ -65,31 +46,33 @@ export const LabelText = styled.Text<LabelProps>(
     mode,
     textTransform,
     disabled = false,
-  }) => ({
-    color: disabled
-      ? theme.color.onSurfaceDisabled
-      : getSelectTheme(brand, {
+  }) => {
+    return {
+      color: disabled
+        ? theme.color.onSurfaceDisabled
+        : getSelectTheme(brand, {
+            theme,
+            type,
+            color,
+            mode,
+          })?.label,
+      fontFamily: theme.button.label.primary.fontFamily,
+      fontSize: theme.button.label.fontSize,
+      fontWeight: theme.button.label.primary.fontWeight,
+      letterSpacing: theme.button.label.letterSpacing,
+      lineHeight: 19,
+      textTransform:
+        textTransform ||
+        getSelectTheme(brand, {
           theme,
           type,
           color,
           mode,
-        })?.label,
-    fontFamily: theme.button.label.primary.fontFamily,
-    fontSize: theme.button.label.fontSize,
-    fontWeight: theme.button.label.primary.fontWeight,
-    letterSpacing: theme.button.label.letterSpacing,
-    lineHeight: 19,
-    textTransform:
-      textTransform ||
-      getSelectTheme(brand, {
-        theme,
-        type,
-        color,
-        mode,
-      })?.textransform,
-    marginEnd: iconName && iconPosition === 'right' ? theme.spacing.tiny : 0,
-    marginStart: iconName && iconPosition === 'left' ? theme.spacing.tiny : 0,
-  })
+        })?.textransform,
+      marginEnd: iconName && iconPosition === 'right' ? theme.spacing.tiny : 0,
+      marginStart: iconName && iconPosition === 'left' ? theme.spacing.tiny : 0,
+    };
+  }
 );
 
 export const Surface = styled.View<SurfaceProps>(
@@ -101,7 +84,7 @@ export const Surface = styled.View<SurfaceProps>(
     brand,
     mode,
     type = 'contained',
-  }: SurfaceProps) => ({
+  }) => ({
     ...getButtonStylesBySize({
       size,
       theme,

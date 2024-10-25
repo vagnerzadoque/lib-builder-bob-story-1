@@ -3,6 +3,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components/native";
 import { buildTheme } from "../src/common/theme";
 import type { Decorator } from '@storybook/react';
+import { withConsole } from '@storybook/addon-console';
 
 
 // Definição das marcas e modos disponíveis
@@ -52,8 +53,11 @@ export const globalTypes = {
   },
 };
 
+
+
 // Decorator para aplicar o tema selecionado
 export const decorators: Decorator[] = [
+  (storyFn, context) => withConsole()(storyFn)(context),
   (Story, context) => {
     const { brand, mode } = context.globals;
     const themeKey = `${brand}_${mode}`;

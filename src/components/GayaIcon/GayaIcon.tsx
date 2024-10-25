@@ -1,70 +1,35 @@
 import React from 'react';
-import styled from 'styled-components/native';
 import { IconName, icons } from '@naturacosmeticos/natds-icons';
-import { Theme } from '../../common/theme';
-import { IconProps } from '../GayaIcon/GayaIcon.types';
-
-type IconStyleProps = {
-  theme: Theme;
-} & IconProps;
-
-// export const getIconColor = (theme: Theme, color: IconColors) => {
-//   switch (color) {
-//     case '#333333':
-//       return color
-//     case 'default':
-//       return getColorHighEmphasis(theme)
-//     default:
-//       return getColorByName(theme, color)
-//   }
-// }
-
-export const IconComponent = styled.Text<IconProps>(
-  ({ color = 'neutral', size = 'standard', type, disabled, theme }: IconStyleProps) => ({
-    color: disabled ? theme.button[type ?? 'contained'].color.disable.label : theme.button[type ?? 'contained'].color[color ?? 'primary'].label,
-    fontFamily: 'natds-icons',
-    fontSize: theme.size[size],
-  })
-);
+import { BaseGayaIconProps, GayaIconProps } from './GayaIcon.props';
+import { BaseIcon } from './GayaIcon.styles';
 
 const defaultIconName = 'outlined-default-mockup';
 
+// TODO: Verify logic
 export const checkIconName = (iconName: IconName) =>
   (icons[iconName]
     ? icons[iconName].replace('%', '\\')
     : icons[defaultIconName]
   ).replace('%', '\\');
 
-export const Icon = ({
-  accessibilityHint,
-  accessibilityLabel,
-  accessibilityRole = 'image',
-  color = 'neutral',
-  name = defaultIconName,
-  testID = 'natds-icon',
-  theme,
-  size = 'standard',
+export const BaseGayaIcon = ({
+  color,
   disabled,
-  type,
-  style,
-}: IconProps) => {
+  internal,
+  name = defaultIconName,
+  size = 'standard',
+}: BaseGayaIconProps) => {
   const unicodeName = checkIconName(name);
   const code = JSON.parse(`["${unicodeName}"]`)[0];
 
   return (
-    <IconComponent
-      accessibilityHint={accessibilityHint}
-      accessibilityLabel={accessibilityLabel}
-      accessibilityRole={accessibilityRole}
-      color={color}
-      size={size}
-      type={type}
-      disabled={disabled}
-      style={style}
-      testID={testID}
-      theme={theme}
-    >
+    <BaseIcon color={color} disabled={disabled} size={size} {...internal?.icon}>
       {code}
-    </IconComponent>
+    </BaseIcon>
   );
+};
+
+export const GayaIcon = (dirtyProps: GayaIconProps) => {
+  const { internal, ...props }: BaseGayaIconProps = dirtyProps;
+  return <BaseGayaIcon {...props} />;
 };
