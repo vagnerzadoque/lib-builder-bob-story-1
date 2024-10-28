@@ -6,8 +6,8 @@ export type IconSizesType = keyof Size;
 
 export interface BaseGayaIconProps {
   /**
-  * Icon color
-  */
+   * Icon color
+   */
   color?: keyof Color;
   /**
    * Icon name
@@ -29,4 +29,4 @@ export interface BaseGayaIconProps {
   };
 }
 
-export type GayaIconProps = Omit<BaseGayaIconProps, 'internal'>
+export type GayaIconProps = Omit<BaseGayaIconProps, 'internal'>;

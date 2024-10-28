@@ -26,6 +26,6 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     name: 'outlined-social-sparks',
-    color: "primary"
+    color: 'primary',
   },
 };

@@ -22,11 +22,12 @@ export const GayaButtonBase = ({
   type = 'contained',
 }: GayaButtonBaseProps) => {
   const theme = useTheme();
-  const themeSelector = brand ? buildTheme(brand, mode) : theme
+  const selectedTheme = brand ? buildTheme(brand, mode) : theme;
+  // const selectedTheme = theme;
 
   const iconColor = disabled
-        ?  themeSelector.button[type].color.disable.label
-        : themeSelector.button[type].color[color ?? 'primary'].label;
+    ? selectedTheme.button[type].color.disable.label
+    : selectedTheme.button[type].color[color ?? 'primary'].label;
 
   return (
     <BaseGayaTouchableRipple
@@ -57,7 +58,6 @@ export const GayaButtonBase = ({
             textTransform={textTransform}
             iconName={iconName}
             iconPosition={iconPosition}
-            testID="button-label"
             type={type}
             brand={brand}
             mode={mode}

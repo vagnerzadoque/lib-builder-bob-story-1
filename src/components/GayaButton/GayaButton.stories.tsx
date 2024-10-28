@@ -1,7 +1,9 @@
 import React from 'react';
-import type { Meta, StoryObj, StoryFn, Decorator } from '@storybook/react';
-import { GayaButtonBase } from './GayaButton';
+import type { Meta, StoryObj, Decorator } from '@storybook/react';
+import { GayaButton, GayaButtonBase } from './GayaButton';
 import { GayaProvider } from '../../common/GayaProvider';
+import { View } from 'react-native';
+import { BrandTypes } from '../../common/brandTypes';
 
 const meta: Meta<typeof GayaButtonBase> = {
   title: 'GaYa Button',
@@ -26,19 +28,29 @@ export const Primary: Story = {
   },
 };
 
-const withCustomTheme: Decorator = (Story) => (
-  <GayaProvider brand='avon_v2' mode='light'>
-    <Story />
-  </GayaProvider>
+const withCustomTheme: Decorator = (
+  Story,
+  { args: { brand, mode, ...rest } }
+) => (
+  <>
+    <View style={{ marginBottom: 16 }}>
+      <GayaButton text="GayaButton" onPress={() => {}} {...rest} />
+    </View>
+    <GayaProvider brand={brand as BrandTypes} mode={mode as 'light' | 'dark'}>
+      <Story />
+    </GayaProvider>
+  </>
 );
 
-export const StoryComTemaPersonalizado = (args: React.ComponentProps<typeof GayaButtonBase>) => (
-  <GayaButtonBase {...args} />
-);
+export const StoryComTemaPersonalizado = (
+  args: React.ComponentProps<typeof GayaButtonBase>
+) => <GayaButtonBase {...args} />;
 StoryComTemaPersonalizado.decorators = [withCustomTheme];
 StoryComTemaPersonalizado.args = {
-  onPress: undefined,
-  text: 'GayaButton',
+  onPress: () => {},
+  text: 'GaYa Button',
   iconName: 'outlined-social-sparks',
   iconPosition: 'left',
+  brand: 'avon_v2',
+  textTransform: undefined
 };

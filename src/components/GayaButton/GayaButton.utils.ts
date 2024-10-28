@@ -44,7 +44,7 @@ export const getSelectTheme = (
       border: theme?.button[type].color[color].border,
       label: theme?.button[type].color[color].label,
       buttonBorderRadius: theme?.button.borderRadius,
-      textransform: theme?.button.textTransform as
+      textTransform: theme?.button.textTransform as
         | 'uppercase'
         | 'lowercase'
         | 'capitalize',

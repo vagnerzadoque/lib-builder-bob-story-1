@@ -68,7 +68,7 @@ export const LabelText = styled.Text<LabelProps>(
           type,
           color,
           mode,
-        })?.textransform,
+        })?.textTransform,
       marginEnd: iconName && iconPosition === 'right' ? theme.spacing.tiny : 0,
       marginStart: iconName && iconPosition === 'left' ? theme.spacing.tiny : 0,
     };
