@@ -5,6 +5,7 @@ import { LabelContainer, LabelText, Surface } from './GayaButton.styles';
 import { getSelectTheme } from './GayaButton.utils';
 import { BaseGayaTouchableRipple } from '../GayaTouchableRipple/GayaTouchableRipple';
 import { GayaButtonProps, GayaButtonBaseProps } from './GayaButton.props';
+import { buildTheme } from '../../common/theme';
 
 export const GayaButtonBase = ({
   brand,
@@ -21,10 +22,11 @@ export const GayaButtonBase = ({
   type = 'contained',
 }: GayaButtonBaseProps) => {
   const theme = useTheme();
+  const themeSelector = brand ? buildTheme(brand, mode) : theme
 
   const iconColor = disabled
-    ? theme.button[type].color.disable.label
-    : theme.button[type].color[color ?? 'primary'].label;
+        ?  themeSelector.button[type].color.disable.label
+        : themeSelector.button[type].color[color ?? 'primary'].label;
 
   return (
     <BaseGayaTouchableRipple
