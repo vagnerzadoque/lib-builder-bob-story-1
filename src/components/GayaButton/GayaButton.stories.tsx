@@ -19,6 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Interactive: Story = {
   args: {
+    iconName: 'outlined-default-mockup',
     onPress: () => {},
     text: 'GaYa Button',
   },
@@ -48,6 +49,7 @@ InteractiveWithGayaProvider.decorators = [withCustomTheme];
 
 InteractiveWithGayaProvider.args = {
   brand: 'avon_v2',
+  iconName: 'outlined-default-mockup',
   onPress: () => {},
   text: 'GaYa Button',
 };
