@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTheme } from 'styled-components/native';
-import { BaseGayaIcon } from '../GayaIcon/GayaIcon';
+import { GayaIconBase } from '../GayaIcon/GayaIcon';
 import { LabelContainer, LabelText, Surface } from './GayaButton.styles';
 import { getSelectTheme } from './GayaButton.utils';
-import { BaseGayaTouchableRipple } from '../GayaTouchableRipple/GayaTouchableRipple';
+import { GayaTouchableRippleBase } from '../GayaTouchableRipple/GayaTouchableRipple';
 import { GayaButtonProps, GayaButtonBaseProps } from './GayaButton.props';
 import { buildTheme } from '../../common/theme';
 
@@ -29,7 +29,7 @@ export const GayaButtonBase = ({
     : selectedTheme.button[type].color[color ?? 'primary'].label;
 
   return (
-    <BaseGayaTouchableRipple
+    <GayaTouchableRippleBase
       color="highlight"
       disabled={disabled}
       hideOverflow
@@ -67,7 +67,7 @@ export const GayaButtonBase = ({
             {text}
           </LabelText>
           {iconName && (
-            <BaseGayaIcon
+            <GayaIconBase
               disabled={disabled}
               name={iconName}
               size="small"
@@ -78,7 +78,7 @@ export const GayaButtonBase = ({
           )}
         </LabelContainer>
       </Surface>
-    </BaseGayaTouchableRipple>
+    </GayaTouchableRippleBase>
   );
 };
 

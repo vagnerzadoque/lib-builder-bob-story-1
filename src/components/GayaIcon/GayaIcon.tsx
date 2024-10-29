@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconName, icons } from '@naturacosmeticos/natds-icons';
-import { BaseGayaIconProps, GayaIconProps } from './GayaIcon.props';
+import { GayaIconBaseProps, GayaIconProps } from './GayaIcon.props';
 import { Text } from 'react-native';
 import { useTheme } from 'styled-components/native';
 
@@ -12,13 +12,13 @@ export const checkIconName = (iconName: IconName) =>
     : icons[defaultIconName]
   ).replace('%', '\\');
 
-export const BaseGayaIcon = ({
+export const GayaIconBase = ({
   color = 'primary',
   disabled,
   internal,
   name = defaultIconName,
   size = 'standard',
-}: BaseGayaIconProps) => {
+}: GayaIconBaseProps) => {
   const theme = useTheme();
   const unicodeName = checkIconName(name);
   const code = JSON.parse(`["${unicodeName}"]`)[0];
@@ -41,6 +41,6 @@ export const BaseGayaIcon = ({
 };
 
 export const GayaIcon = (dirtyProps: GayaIconProps) => {
-  const { internal, ...props }: BaseGayaIconProps = dirtyProps;
-  return <BaseGayaIcon {...props} />;
+  const { internal, ...props }: GayaIconBaseProps = dirtyProps;
+  return <GayaIconBase {...props} />;
 };

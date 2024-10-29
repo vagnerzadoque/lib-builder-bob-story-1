@@ -4,7 +4,7 @@ import { StyleProp, TextStyle } from 'react-native';
 
 export type IconSizesType = keyof Size;
 
-export interface BaseGayaIconProps {
+export interface GayaIconBaseProps {
   /**
    * Icon color
    */
@@ -29,4 +29,4 @@ export interface BaseGayaIconProps {
   };
 }
 
-export type GayaIconProps = Omit<BaseGayaIconProps, 'internal'>;
+export type GayaIconProps = Omit<GayaIconBaseProps, 'internal'>;

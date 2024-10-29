@@ -7,7 +7,7 @@ import {
   GayaTouchableRippleBaseProps,
 } from './GayaTouchableRipple.props';
 
-export const BaseGayaTouchableRipple = ({
+export const GayaTouchableRippleBase = ({
   children,
   color = 'highlight',
   disabled = false,
@@ -32,5 +32,5 @@ export const BaseGayaTouchableRipple = ({
 
 export const GayaTouchableRipple = (dirtyProps: GayaTouchableRippleProps) => {
   const { internal, ...props }: GayaTouchableRippleBaseProps = dirtyProps;
-  return <BaseGayaTouchableRipple {...props} />;
+  return <GayaTouchableRippleBase {...props} />;
 };

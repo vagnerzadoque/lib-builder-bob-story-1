@@ -17,35 +17,37 @@ const meta: Meta<typeof GayaButtonBase> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Interactive: Story = {
   args: {
     onPress: () => {},
     text: 'GaYa Button',
-    iconName: 'outlined-social-sparks',
   },
 };
 
-const withCustomTheme: Decorator = (
-  Story,
-  { args: { brand, mode, ...rest } }
-) => (
-  <>
-    <View style={{ marginBottom: 16 }}>
-      <GayaButton text="GayaButton" onPress={() => {}} {...rest} />
-    </View>
-    <GayaProvider brand={brand as BrandTypes} mode={mode as 'light' | 'dark'}>
-      <Story />
-    </GayaProvider>
-  </>
-);
+const withCustomTheme: Decorator = (Story, context) => {
+  const { brand, mode, ...restArgs } = context.args;
+  const newContext = { ...context, args: restArgs };
 
-export const StoryComTemaPersonalizado = (
+  return (
+    <>
+      <View style={{ marginBottom: 16 }}>
+        <GayaButton text="GayaButton" onPress={() => {}} {...restArgs} />
+      </View>
+      <GayaProvider brand={brand as BrandTypes} mode={mode as 'light' | 'dark'}>
+        <Story {...newContext} />
+      </GayaProvider>
+    </>
+  );
+};
+
+export const InteractiveWithGayaProvider: Story = (
   args: React.ComponentProps<typeof GayaButtonBase>
 ) => <GayaButtonBase {...args} />;
-StoryComTemaPersonalizado.decorators = [withCustomTheme];
-StoryComTemaPersonalizado.args = {
+
+InteractiveWithGayaProvider.decorators = [withCustomTheme];
+
+InteractiveWithGayaProvider.args = {
+  brand: 'avon_v2',
   onPress: () => {},
   text: 'GaYa Button',
-  iconName: 'outlined-social-sparks',
-  brand: 'avon_v2',
 };
