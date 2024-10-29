@@ -36,4 +36,7 @@ export interface GayaTouchableRippleBaseProps {
   };
 }
 
-export type GayaTouchableRippleProps = Omit<GayaTouchableRippleBaseProps, 'internal'>
+export type GayaTouchableRippleProps = Omit<
+  GayaTouchableRippleBaseProps,
+  'internal'
+>;

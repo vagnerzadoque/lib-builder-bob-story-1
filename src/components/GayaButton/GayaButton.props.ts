@@ -71,5 +71,4 @@ export interface GayaButtonBaseProps {
   };
 }
 
-export type GayaButtonProps = Omit<GayaButtonBaseProps, 'internal'>
-
+export type GayaButtonProps = Omit<GayaButtonBaseProps, 'internal'>;

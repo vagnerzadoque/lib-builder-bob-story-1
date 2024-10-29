@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components/native';
-import { buildTheme } from '../common/theme';
-import { BrandTypes } from './brandTypes';
+import { buildTheme } from '../theme';
+import { BrandTypes } from '../brandTypes';
 
 export interface GayaProviderProp {
   brand: BrandTypes;

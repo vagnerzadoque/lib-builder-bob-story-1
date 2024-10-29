@@ -22,7 +22,6 @@ const config: StorybookConfig = {
     options: {},
   },
   webpackFinal: async (config: Configuration) => {
-    // Alias para 'react-native-web'
     config.resolve = {
       ...(config.resolve || {}),
       alias: {
@@ -32,7 +31,6 @@ const config: StorybookConfig = {
       },
     };
 
-    // Incluir 'node_modules/react-native' na transpilação do Babel
     const babelLoaderRule = config.module?.rules?.find(
       (rule) =>
         typeof rule !== 'string' &&
@@ -48,7 +46,10 @@ const config: StorybookConfig = {
       if (Array.isArray(babelLoaderRule.include)) {
         babelLoaderRule.include.push(/node_modules\/react-native/);
       } else {
-        babelLoaderRule.include = [babelLoaderRule.include, /node_modules\/react-native/];
+        babelLoaderRule.include = [
+          babelLoaderRule.include,
+          /node_modules\/react-native/,
+        ];
       }
     }
 

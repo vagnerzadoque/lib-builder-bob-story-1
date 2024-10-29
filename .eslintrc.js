@@ -7,8 +7,8 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   env: {
-  node: true
-},
+    node: true,
+  },
   settings: {
     react: {
       version: 'detect',
@@ -35,7 +35,13 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/*.stories.*', '**/*.story.*', '**/*.tsx', 'src/**/*tsx', '**/.storybook/**/*.*'],
+      files: [
+        '**/*.stories.*',
+        '**/*.story.*',
+        '**/*.tsx',
+        'src/**/*tsx',
+        '**/.storybook/**/*.*',
+      ],
       rules: {
         'no-unused-vars': 'off',
       },

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj, Decorator } from '@storybook/react';
 import { GayaButton, GayaButtonBase } from './GayaButton';
-import { GayaProvider } from '../../common/GayaProvider';
+import { GayaProvider } from '../../common/providers/GayaProvider';
 import { View } from 'react-native';
 import { BrandTypes } from '../../common/brandTypes';
 
@@ -19,12 +19,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    onPress: () => {
-      // Função vazia ou implementação desejada
-    },
-    text: 'GayaButton',
+    onPress: () => {},
+    text: 'GaYa Button',
     iconName: 'outlined-social-sparks',
-    iconPosition: 'left',
   },
 };
 
@@ -50,7 +47,5 @@ StoryComTemaPersonalizado.args = {
   onPress: () => {},
   text: 'GaYa Button',
   iconName: 'outlined-social-sparks',
-  iconPosition: 'left',
   brand: 'avon_v2',
-  textTransform: undefined
 };

@@ -23,7 +23,6 @@ export const GayaButtonBase = ({
 }: GayaButtonBaseProps) => {
   const theme = useTheme();
   const selectedTheme = brand ? buildTheme(brand, mode) : theme;
-  // const selectedTheme = theme;
 
   const iconColor = disabled
     ? selectedTheme.button[type].color.disable.label

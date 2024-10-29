@@ -2,7 +2,10 @@ import React from 'react';
 import { TouchableHighlight } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import { buildColorWithOpacity } from '../../common/theme';
-import { GayaTouchableRippleProps, GayaTouchableRippleBaseProps } from './GayaTouchableRipple.props';
+import {
+  GayaTouchableRippleProps,
+  GayaTouchableRippleBaseProps,
+} from './GayaTouchableRipple.props';
 
 export const BaseGayaTouchableRipple = ({
   children,
