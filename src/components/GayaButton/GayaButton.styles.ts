@@ -2,10 +2,11 @@ import styled from 'styled-components/native';
 import { StyleProp, TextStyle } from 'react-native';
 import { GayaButtonProps } from './GayaButton.props';
 import {
-  getSelectTheme,
-  getButtonStylesBySize,
+  getTokens,
+  getButtonStyleBySize,
   getButtonShadowByType,
 } from './GayaButton.utils';
+import { buildTheme } from '../../common/theme';
 
 export type ILabelContainer = {
   iconPosition: 'left' | 'right';
@@ -41,20 +42,21 @@ export const LabelText = styled.Text<LabelProps>(
     iconPosition,
     type,
     color,
-    theme,
+    theme: ctxTheme,
     brand,
     mode,
     textTransform,
     disabled = false,
   }) => {
+    const theme = brand ? buildTheme(brand, mode) : ctxTheme;
+
     return {
       color: disabled
         ? theme.color.onSurfaceDisabled
-        : getSelectTheme(brand, {
+        : getTokens({
             theme,
             type,
             color,
-            mode,
           })?.label,
       fontFamily: theme.button.label.primary.fontFamily,
       fontSize: theme.button.label.fontSize,
@@ -63,11 +65,10 @@ export const LabelText = styled.Text<LabelProps>(
       lineHeight: 19,
       textTransform:
         textTransform ||
-        getSelectTheme(brand, {
+        getTokens({
           theme,
           type,
           color,
-          mode,
         })?.textTransform,
       marginEnd: iconName && iconPosition === 'right' ? theme.spacing.tiny : 0,
       marginStart: iconName && iconPosition === 'left' ? theme.spacing.tiny : 0,
@@ -79,44 +80,43 @@ export const Surface = styled.View<SurfaceProps>(
   ({
     disabled = false,
     size,
-    theme,
+    theme: ctxTheme,
     color,
     brand,
     mode,
     type = 'contained',
-  }) => ({
-    ...getButtonStylesBySize({
-      size,
-      theme,
-      brand,
-      mode,
-    }),
-    ...getButtonShadowByType({ disabled, theme, type }),
-    alignContent: 'center',
-    alignItems: 'center',
-    background: disabled
-      ? theme?.color.surfaceDisabled
-      : getSelectTheme(brand, {
-          theme,
-          type,
-          color,
-          mode,
-        })?.back,
-    borderColor: disabled
-      ? theme?.color.surfaceDisabled
-      : getSelectTheme(brand, {
-          theme,
-          type,
-          color,
-          mode,
-        })?.border,
-    borderRadius: getSelectTheme(brand, {
-      theme,
-      type,
-      color,
-      mode,
-    })?.buttonBorderRadius,
-    borderWidth: type === 'outlined' ? 1 : 0,
-    justifyContent: 'center',
-  })
+  }) => {
+    const theme = brand ? buildTheme(brand, mode) : ctxTheme;
+
+    return {
+      ...getButtonStyleBySize({
+        size,
+        theme,
+      }),
+      ...getButtonShadowByType({ disabled, theme, type }),
+      alignContent: 'center',
+      alignItems: 'center',
+      background: disabled
+        ? theme.color.surfaceDisabled
+        : getTokens({
+            theme,
+            type,
+            color,
+          })?.background,
+      borderColor: disabled
+        ? theme.color.surfaceDisabled
+        : getTokens({
+            theme,
+            type,
+            color,
+          })?.border,
+      borderRadius: getTokens({
+        theme,
+        type,
+        color,
+      })?.buttonBorderRadius,
+      borderWidth: type === 'outlined' ? 1 : 0,
+      justifyContent: 'center',
+    };
+  }
 );

@@ -25,7 +25,7 @@ export interface GayaIconBaseProps {
    *
    */
   internal?: {
-    icon?: { style: StyleProp<TextStyle> };
+    text?: { style: StyleProp<TextStyle> };
   };
 }
 

@@ -32,7 +32,7 @@ export const GayaIconBase = ({
           fontFamily: 'natds-icons',
           fontSize: theme.size[size],
         },
-        internal?.icon?.style,
+        internal?.text?.style,
       ]}
     >
       {code}

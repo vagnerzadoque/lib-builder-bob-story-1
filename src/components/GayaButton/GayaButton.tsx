@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from 'styled-components/native';
 import { GayaIconBase } from '../GayaIcon/GayaIcon';
 import { LabelContainer, LabelText, Surface } from './GayaButton.styles';
-import { getSelectTheme } from './GayaButton.utils';
+import { getTokens } from './GayaButton.utils';
 import { GayaTouchableRippleBase } from '../GayaTouchableRipple/GayaTouchableRipple';
 import { GayaButtonProps, GayaButtonBaseProps } from './GayaButton.props';
 import { buildTheme } from '../../common/theme';
@@ -21,12 +21,12 @@ export const GayaButtonBase = ({
   textTransform,
   type = 'contained',
 }: GayaButtonBaseProps) => {
-  const theme = useTheme();
-  const selectedTheme = brand ? buildTheme(brand, mode) : theme;
+  const ctxTheme = useTheme();
+  const theme = brand ? buildTheme(brand, mode) : ctxTheme;
 
   const iconColor = disabled
-    ? selectedTheme.button[type].color.disable.label
-    : selectedTheme.button[type].color[color ?? 'primary'].label;
+    ? theme.button[type].color.disable.label
+    : theme.button[type].color[color ?? 'primary'].label;
 
   return (
     <GayaTouchableRippleBase
@@ -37,8 +37,7 @@ export const GayaButtonBase = ({
       internal={{
         touchableHighlight: {
           style: {
-            borderRadius: getSelectTheme(brand, { theme, type, color })
-              ?.buttonBorderRadius,
+            borderRadius: getTokens({ theme, type, color })?.buttonBorderRadius,
           },
         },
       }}
@@ -72,7 +71,7 @@ export const GayaButtonBase = ({
               name={iconName}
               size="small"
               internal={{
-                icon: { style: { color: iconColor } },
+                text: { style: { color: iconColor } },
               }}
             />
           )}
