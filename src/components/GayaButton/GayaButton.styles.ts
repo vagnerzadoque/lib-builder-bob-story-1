@@ -49,29 +49,22 @@ export const LabelText = styled.Text<LabelProps>(
     disabled = false,
   }) => {
     const theme = brand ? buildTheme(brand, mode) : ctxTheme;
+    const tokens = getTokens({
+      color,
+      theme,
+      type,
+    });
 
     return {
-      color: disabled
-        ? theme.color.onSurfaceDisabled
-        : getTokens({
-            theme,
-            type,
-            color,
-          })?.label,
+      color: disabled ? theme.color.onSurfaceDisabled : tokens?.label,
       fontFamily: theme.button.label.primary.fontFamily,
       fontSize: theme.button.label.fontSize,
       fontWeight: theme.button.label.primary.fontWeight,
       letterSpacing: theme.button.label.letterSpacing,
       lineHeight: 19,
-      textTransform:
-        textTransform ||
-        getTokens({
-          theme,
-          type,
-          color,
-        })?.textTransform,
       marginEnd: iconName && iconPosition === 'right' ? theme.spacing.tiny : 0,
       marginStart: iconName && iconPosition === 'left' ? theme.spacing.tiny : 0,
+      textTransform: textTransform || tokens?.textTransform,
     };
   }
 );
@@ -87,6 +80,11 @@ export const Surface = styled.View<SurfaceProps>(
     type = 'contained',
   }) => {
     const theme = brand ? buildTheme(brand, mode) : ctxTheme;
+    const tokens = getTokens({
+      color,
+      theme,
+      type,
+    });
 
     return {
       ...getButtonStyleBySize({
@@ -96,25 +94,9 @@ export const Surface = styled.View<SurfaceProps>(
       ...getButtonShadowByType({ disabled, theme, type }),
       alignContent: 'center',
       alignItems: 'center',
-      background: disabled
-        ? theme.color.surfaceDisabled
-        : getTokens({
-            theme,
-            type,
-            color,
-          })?.background,
-      borderColor: disabled
-        ? theme.color.surfaceDisabled
-        : getTokens({
-            theme,
-            type,
-            color,
-          })?.border,
-      borderRadius: getTokens({
-        theme,
-        type,
-        color,
-      })?.buttonBorderRadius,
+      background: disabled ? theme.color.surfaceDisabled : tokens?.background,
+      borderColor: disabled ? theme.color.surfaceDisabled : tokens?.border,
+      borderRadius: tokens?.buttonBorderRadius,
       borderWidth: type === 'outlined' ? 1 : 0,
       justifyContent: 'center',
     };
