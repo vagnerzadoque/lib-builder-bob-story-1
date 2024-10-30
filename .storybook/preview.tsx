@@ -1,8 +1,8 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components/native';
 import { buildTheme } from '../src/common/theme';
 import type { Decorator } from '@storybook/react';
 import { withConsole } from '@storybook/addon-console';
+import { GayaProvider } from '../src/common/providers/GayaProvider';
 
 const brands = [
   'aesop',
@@ -64,13 +64,11 @@ export const decorators: Decorator[] = [
   (storyFn, context) => withConsole()(storyFn)(context),
   (Story, context) => {
     const { brand, mode } = context.globals;
-    const themeKey = `${brand}_${mode}`;
-    const selectedTheme = themes[themeKey] || themes['natura_v3_light'];
 
     return (
-      <ThemeProvider theme={selectedTheme}>
+      <GayaProvider brand={brand ?? 'natura_v3'} mode={mode}>
         <Story />
-      </ThemeProvider>
+      </GayaProvider>
     );
   },
 ];

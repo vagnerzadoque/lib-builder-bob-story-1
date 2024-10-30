@@ -1,7 +1,7 @@
 import { SurfaceProps } from './GayaButton.styles';
 import { DefaultTheme } from 'styled-components/native';
 
-export const getTokens = ({
+export const getButtonTokens = ({
   color,
   theme,
   type,

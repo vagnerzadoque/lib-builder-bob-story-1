@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import { StyleProp, TextStyle } from 'react-native';
 import { GayaButtonProps } from './GayaButton.props';
 import {
-  getTokens,
+  getButtonTokens,
   getButtonStyleBySize,
   getButtonShadowByType,
 } from './GayaButton.utils';
@@ -49,7 +49,7 @@ export const LabelText = styled.Text<LabelProps>(
     disabled = false,
   }) => {
     const theme = brand ? buildTheme(brand, mode) : ctxTheme;
-    const tokens = getTokens({
+    const tokens = getButtonTokens({
       color,
       theme,
       type,
@@ -80,7 +80,7 @@ export const Surface = styled.View<SurfaceProps>(
     type = 'contained',
   }) => {
     const theme = brand ? buildTheme(brand, mode) : ctxTheme;
-    const tokens = getTokens({
+    const tokens = getButtonTokens({
       color,
       theme,
       type,

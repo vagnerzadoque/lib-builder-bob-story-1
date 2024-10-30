@@ -5,16 +5,16 @@ import { BrandTypes } from '../brandTypes';
 
 export interface GayaProviderProps {
   brand: BrandTypes;
-  mode: 'light' | 'dark';
   children: React.ReactNode;
+  mode?: 'light' | 'dark';
 }
 
 export const GayaProvider = ({
-  children,
   brand,
-  mode,
+  children,
+  mode = 'light',
 }: GayaProviderProps): JSX.Element => {
-  const selectedTheme = buildTheme(brand, mode);
+  const theme = buildTheme(brand, mode);
 
-  return <ThemeProvider theme={selectedTheme}>{children}</ThemeProvider>;
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };

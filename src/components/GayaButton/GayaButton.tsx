@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from 'styled-components/native';
 import { GayaIconBase } from '../GayaIcon/GayaIcon';
 import { LabelContainer, LabelText, Surface } from './GayaButton.styles';
-import { getTokens } from './GayaButton.utils';
+import { getButtonTokens } from './GayaButton.utils';
 import { GayaTouchableRippleBase } from '../GayaTouchableRipple/GayaTouchableRipple';
 import { GayaButtonProps, GayaButtonBaseProps } from './GayaButton.props';
 import { buildTheme } from '../../common/theme';
@@ -23,6 +23,11 @@ export const GayaButtonBase = ({
 }: GayaButtonBaseProps) => {
   const ctxTheme = useTheme();
   const theme = brand ? buildTheme(brand, mode) : ctxTheme;
+  const tokens = getButtonTokens({
+    color,
+    theme,
+    type,
+  });
 
   const iconColor = disabled
     ? theme.button[type].color.disable.label
@@ -37,7 +42,7 @@ export const GayaButtonBase = ({
       internal={{
         touchableHighlight: {
           style: {
-            borderRadius: getTokens({ theme, type, color })?.buttonBorderRadius,
+            borderRadius: tokens?.buttonBorderRadius,
           },
         },
       }}
