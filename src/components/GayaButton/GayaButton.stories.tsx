@@ -19,7 +19,7 @@ Recomendamos a migração para o GayaButton o mais rápido possível para aprove
 | **Icon**         | **iconName**     | 'icon_name'                                                                        | ✅ Disponível        |
 | **Disabled**     | **disabled**     | true, false                                                                        | ✅ Disponível        |
 | **Display**      | **display **     | inline, block                                                                      | ❌ Não aplicável   |
-| **--**           | **brand**        | avon, avon_v2, natura, natura_v2, natura_v3, theBodyShop, <br /> consultoriaDeBeleza, casaEestilo            | ✅ Disponível        |
+| **--**           | **brand**        | avon, avon_v2, natura, natura_v2, natura_v3, theBodyShop, <br /> consultoriaDeBeleza, casaEestilo, casaEestilo_v2, forcaDeVendas            | ✅ Disponível        |
 | **color**        | **color**        | primary, onPrimary, secondary, onSecondary, neutral, inverse                        | ✅ Disponível        |
 
 ## Exemplos de usos
