@@ -19,9 +19,12 @@ module.exports = {
       jsx: true,
     },
   },
+  ignorePatterns: ['storybook-static/', 'babel.config.js', 'metro.config.js'], // Certifique-se de que esta linha esteja presente
   rules: {
-    // Outras regras
-    'no-unused-vars': [
+    // Desabilita a regra base
+    'no-unused-vars': 'off',
+    // Configura a regra do TypeScript
+    '@typescript-eslint/no-unused-vars': [
       'error',
       {
         vars: 'all',
@@ -43,7 +46,7 @@ module.exports = {
         '**/.storybook/**/*.*',
       ],
       rules: {
-        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'off', // Desabilita a regra para esses arquivos
       },
     },
   ],
