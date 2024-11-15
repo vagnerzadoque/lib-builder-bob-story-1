@@ -25,14 +25,14 @@ module.exports = (api) => {
         },
       ],
       '@babel/preset-typescript',
-      '@babel/preset-flow'
+      // '@babel/preset-flow'
     );
   }
 
   return {
     presets,
     plugins: [
-      // Seus plugins existentes, se houver
+     
     ],
   };
 };
