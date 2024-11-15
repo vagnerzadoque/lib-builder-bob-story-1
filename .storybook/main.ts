@@ -21,6 +21,19 @@ const config: StorybookConfig = {
     name: getAbsolutePath('@storybook/react-webpack5'),
     options: {},
   },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      savePropValueAsString: true,
+      propFilter: (prop) => {
+        if (prop.parent) {
+          return !prop.parent.fileName.includes('node_modules');
+        }
+        return true;
+      },
+    },
+  },
   webpackFinal: async (config: Configuration) => {
     config.resolve = {
       ...(config.resolve || {}),
@@ -30,6 +43,8 @@ const config: StorybookConfig = {
         'styled-components/native$': 'styled-components',
       },
     };
+
+    
 
     const babelLoaderRule = config.module?.rules?.find(
       (rule) =>
