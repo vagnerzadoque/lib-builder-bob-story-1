@@ -10,6 +10,7 @@ module.exports = (api) => {
     ]);
   } else {
     presets.push(
+      'module:metro-react-native-babel-preset', // Adicionado
       [
         '@babel/preset-env',
         {
@@ -21,18 +22,15 @@ module.exports = (api) => {
       [
         '@babel/preset-react',
         {
-          runtime: 'automatic', // Adicione esta linha
+          runtime: 'automatic',
         },
       ],
-      '@babel/preset-typescript',
-      '@babel/preset-flow'
+      '@babel/preset-typescript'
     );
   }
 
   return {
     presets,
-    plugins: [
-      // Seus plugins existentes, se houver
-    ],
+    plugins: [],
   };
 };

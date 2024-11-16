@@ -3,26 +3,13 @@ import { buildTheme } from '../src/common/theme';
 import type { Decorator } from '@storybook/react';
 import { withConsole } from '@storybook/addon-console';
 import { GayaProvider } from '../src/common/providers/GayaProvider';
+import {brands} from '../src/common/brandTypes'
 
-const brands = [
-  'aesop',
-  'avon',
-  'avon_v2',
-  'biome',
-  'natura',
-  'natura_v2',
-  'natura_v3',
-  'theBodyShop',
-  'consultoriaDeBeleza',
-  'forcaDeVendas',
-  'casaEestilo',
-  'casaEestilo_v2',
-];
 const modes = ['light', 'dark'] as const;
 
 const themes = brands.reduce((acc: Record<string, any>, brand: any) => {
-  acc[`${brand}_light`] = buildTheme(brand, 'light');
-  acc[`${brand}_dark`] = buildTheme(brand, 'dark');
+  acc[`${brand.value}_light`] = buildTheme(brand.value, 'light');
+  acc[`${brand.value}_dark`] = buildTheme(brand.value, 'dark');
   return acc;
 }, {});
 
@@ -34,6 +21,13 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: 'light',
+    values: [
+      { name: 'light', value: '#FFFFFF' },
+      { name: 'dark', value: '#000000' },
+    ],
+  },
 };
 
 export const globalTypes = {
@@ -43,27 +37,23 @@ export const globalTypes = {
     defaultValue: 'natura_v3',
     toolbar: {
       icon: 'paintbrush',
-      items: brands.map((brand) => ({ value: brand, title: brand })),
+      items: brands.map((brand) => ({ value: brand.value, title: brand.name })),
     },
   },
-  mode: {
-    name: 'Mode',
-    description: 'Selecione o modo de exibição',
-    defaultValue: 'light',
-    toolbar: {
-      icon: 'circlehollow',
-      items: modes.map((mode) => ({
-        value: mode,
-        title: mode.charAt(0).toUpperCase() + mode.slice(1),
-      })),
-    },
-  },
+
 };
 
 export const decorators: Decorator[] = [
   (storyFn, context) => withConsole()(storyFn)(context),
   (Story, context) => {
-    const { brand, mode } = context.globals;
+    const { brand } = context.globals;
+    const backgroundValue = context.globals.backgrounds?.value;
+
+    // Determinar o modo com base no background selecionado
+    const mode = backgroundValue === '#000000' ? 'dark' : 'light';
+
+
+
 
     return (
       <GayaProvider brand={brand ?? 'natura_v3'} mode={mode}>
