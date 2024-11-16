@@ -10,7 +10,6 @@ npm install react-native-lib-builder-bob-story-2
 
 ## Usage
 
-
 ```js
 import { multiply } from 'react-native-lib-builder-bob-story-2';
 
@@ -18,7 +17,6 @@ import { multiply } from 'react-native-lib-builder-bob-story-2';
 
 const result = await multiply(3, 7);
 ```
-
 
 ## Contributing
 

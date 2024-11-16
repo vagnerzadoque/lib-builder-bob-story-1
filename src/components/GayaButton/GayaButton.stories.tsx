@@ -1,37 +1,55 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import type { Meta, StoryObj, Decorator } from '@storybook/react';
+import { GayaButton, GayaButtonBase } from './GayaButton';
+import { GayaProvider } from '../../common/providers/GayaProvider';
+import { View } from 'react-native';
+import { BrandTypes } from '../../common/brandTypes';
 
-// import { fn } from '@storybook/test';
-import { GayaButton } from './GayaButton';
-
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta = {
-  title: 'Example/GayaButton',
-  component: GayaButton,
+const meta: Meta<typeof GayaButtonBase> = {
+  title: 'GaYa Button',
+  component: GayaButtonBase,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
-
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  //   args: { onClick: fn() },
-} satisfies Meta<typeof GayaButton>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
+export const Interactive: Story = {
   args: {
-    onPress: () => {
-      ('');
-    },
-    type: 'contained',
-    text: 'GayaButton',
-    iconName: 'outlined-social-sparks',
-    iconPosition: 'left',
-  
+    iconName: 'outlined-default-mockup',
+    onPress: () => {},
+    text: 'GaYa Button',
   },
+};
+
+const withCustomTheme: Decorator = (Story, context) => {
+  const { brand, mode, ...restArgs } = context.args;
+  const newContext = { ...context, args: restArgs };
+
+  return (
+    <>
+      <View style={{ marginBottom: 16 }}>
+        <GayaButton text="GayaButton" onPress={() => {}} {...restArgs} />
+      </View>
+      <GayaProvider brand={brand as BrandTypes} mode={mode as 'light' | 'dark'}>
+        <Story {...newContext} />
+      </GayaProvider>
+    </>
+  );
+};
+
+export const InteractiveWithGayaProvider: Story = (
+  args: React.ComponentProps<typeof GayaButtonBase>
+) => <GayaButtonBase {...args} />;
+
+InteractiveWithGayaProvider.decorators = [withCustomTheme];
+
+InteractiveWithGayaProvider.args = {
+  brand: 'avon_v2',
+  iconName: 'outlined-default-mockup',
+  onPress: () => {},
+  text: 'GaYa Button',
 };

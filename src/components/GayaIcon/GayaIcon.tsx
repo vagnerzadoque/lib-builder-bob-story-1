@@ -1,31 +1,8 @@
 import React from 'react';
-import styled from 'styled-components/native';
 import { IconName, icons } from '@naturacosmeticos/natds-icons';
-import { Theme } from '../../common/theme';
-import { IconProps } from '../GayaIcon/GayaIcon.types';
-
-type IconStyleProps = {
-  theme: Theme;
-} & IconProps;
-
-// export const getIconColor = (theme: Theme, color: IconColors) => {
-//   switch (color) {
-//     case '#333333':
-//       return color
-//     case 'default':
-//       return getColorHighEmphasis(theme)
-//     default:
-//       return getColorByName(theme, color)
-//   }
-// }
-
-export const IconComponent = styled.Text<IconProps>(
-  ({ color = 'highlight', size = 'standard', theme }: IconStyleProps) => ({
-    color: theme.color[color],
-    fontFamily: 'natds-icons',
-    fontSize: theme.size[size],
-  })
-);
+import { GayaIconBaseProps, GayaIconProps } from './GayaIcon.props';
+import { Text } from 'react-native';
+import { useTheme } from 'styled-components/native';
 
 const defaultIconName = 'outlined-default-mockup';
 
@@ -35,32 +12,35 @@ export const checkIconName = (iconName: IconName) =>
     : icons[defaultIconName]
   ).replace('%', '\\');
 
-export const Icon = ({
-  accessibilityHint,
-  accessibilityLabel,
-  accessibilityRole = 'image',
-  color = 'highlight',
+export const GayaIconBase = ({
+  color = 'primary',
+  disabled,
+  internal,
   name = defaultIconName,
-  testID = 'natds-icon',
-  theme,
   size = 'standard',
-  style,
-}: IconProps) => {
+}: GayaIconBaseProps) => {
+  const theme = useTheme();
   const unicodeName = checkIconName(name);
   const code = JSON.parse(`["${unicodeName}"]`)[0];
 
   return (
-    <IconComponent
-      accessibilityHint={accessibilityHint}
-      accessibilityLabel={accessibilityLabel}
-      accessibilityRole={accessibilityRole}
-      color={color}
-      size={size}
-      style={style}
-      testID={testID}
-      theme={theme}
+    <Text
+      disabled={disabled}
+      style={[
+        {
+          color: theme.color[color],
+          fontFamily: 'natds-icons',
+          fontSize: theme.size[size],
+        },
+        internal?.text?.style,
+      ]}
     >
       {code}
-    </IconComponent>
+    </Text>
   );
+};
+
+export const GayaIcon = (dirtyProps: GayaIconProps) => {
+  const { internal, ...props }: GayaIconBaseProps = dirtyProps;
+  return <GayaIconBase {...props} />;
 };

@@ -4755,6 +4755,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-actions@npm:^8.3.6":
+  version: 8.3.6
+  resolution: "@storybook/addon-actions@npm:8.3.6"
+  dependencies:
+    "@storybook/global": ^5.0.0
+    "@types/uuid": ^9.0.1
+    dequal: ^2.0.2
+    polished: ^4.2.2
+    uuid: ^9.0.0
+  peerDependencies:
+    storybook: ^8.3.6
+  checksum: 3a663297494d39d846a50d0b372977843a0cfcbb77b622cd499a95274c404e17817d324f90dc8fa22a74040200276d124719de8a703b19a3e79b98e08ed6d403
+  languageName: node
+  linkType: hard
+
 "@storybook/addon-backgrounds@npm:8.3.3":
   version: 8.3.3
   resolution: "@storybook/addon-backgrounds@npm:8.3.3"
@@ -4765,6 +4780,18 @@ __metadata:
   peerDependencies:
     storybook: ^8.3.3
   checksum: 253bb71d25d10227470cfe4b1db69c3a1bcd691a7f56571bb63f38a783553d1ba1c6a6e27e87b036200c7773a27d647172dc5efb809f8b5ba6062af7b45f9d51
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-console@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@storybook/addon-console@npm:3.0.0"
+  dependencies:
+    "@storybook/global": ^5.0.0
+  peerDependencies:
+    "@storybook/addon-actions": "*"
+    react: "*"
+  checksum: f9863ef50d5c6314518d12cbb745da6a01fd0c41bbee71e2b0181aeaa8b6ce474985ddb600e872951298db98cdf4dc2020cf4939ee757738a16a65c63cc6ca47
   languageName: node
   linkType: hard
 
@@ -16921,6 +16948,8 @@ __metadata:
     "@naturacosmeticos/natds-themes": ^0.80.1
     "@react-native/eslint-config": ^0.73.1
     "@release-it/conventional-changelog": ^5.0.0
+    "@storybook/addon-actions": ^8.3.6
+    "@storybook/addon-console": ^3.0.0
     "@storybook/addon-essentials": ^8.3.3
     "@storybook/addon-interactions": ^8.3.3
     "@storybook/addon-links": ^8.3.3
@@ -16954,6 +16983,31 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
+  dependenciesMeta:
+    "@chromatic-com/storybook":
+      optional: true
+    "@storybook/addon-essentials":
+      optional: true
+    "@storybook/addon-interactions":
+      optional: true
+    "@storybook/addon-links":
+      optional: true
+    "@storybook/addon-onboarding":
+      optional: true
+    "@storybook/addon-webpack5-compiler-swc":
+      optional: true
+    "@storybook/blocks":
+      optional: true
+    "@storybook/react":
+      optional: true
+    "@storybook/react-webpack5":
+      optional: true
+    "@storybook/test":
+      optional: true
+    eslint-plugin-storybook:
+      optional: true
+    storybook:
+      optional: true
   languageName: unknown
   linkType: soft
 

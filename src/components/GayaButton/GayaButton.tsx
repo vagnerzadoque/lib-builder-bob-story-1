@@ -1,45 +1,92 @@
 import React from 'react';
-import { GayaButtonBase } from './GayaButtonBase';
-import { GayaButtonProps } from './GayaButton.props';
+import { useTheme } from 'styled-components/native';
+import { GayaIconBase } from '../GayaIcon/GayaIcon';
+import { LabelContainer, LabelText, Surface } from './GayaButton.styles';
+import { getButtonTokens } from './GayaButton.utils';
+import { GayaTouchableRippleBase } from '../GayaTouchableRipple/GayaTouchableRipple';
+import { GayaButtonProps, GayaButtonBaseProps } from './GayaButton.props';
+import { buildTheme } from '../../common/theme';
 
-export const GayaButton = ({
-  accessibilityHint,
-  accessibilityLabel,
-  accessibilityActions,
-  accessibilityState,
-  onAccessibilityAction,
-  textTransform,
+export const GayaButtonBase = ({
+  brand,
+  color = 'primary',
   disabled = false,
   iconName,
-  color = 'primary',
-  iconPosition,
-  onPress,
-  size = 'semiX',
-  testID = 'button',
-  text,
-  type = 'contained',
-  brand,
+  iconPosition = 'right',
+  internal,
   mode,
-  ...rest
-}: GayaButtonProps) => (
-  <GayaButtonBase
-    accessibilityHint={accessibilityHint}
-    accessibilityLabel={accessibilityLabel}
-    accessibilityActions={accessibilityActions}
-    accessibilityState={accessibilityState}
-    onAccessibilityAction={onAccessibilityAction}
-    disabled={disabled}
-    textTransform={textTransform}
-    iconName={iconName}
-    color={color}
-    iconPosition={iconPosition}
-    onPress={onPress}
-    size={size}
-    brand={brand}
-    mode={mode}
-    testID={testID}
-    text={text}
-    type={type}
-    {...rest}
-  />
-);
+  onPress,
+  size = 'medium',
+  text,
+  textTransform,
+  type = 'contained',
+}: GayaButtonBaseProps) => {
+  const ctxTheme = useTheme();
+  const theme = brand ? buildTheme(brand, mode) : ctxTheme;
+  const tokens = getButtonTokens({
+    color,
+    theme,
+    type,
+  });
+
+  const iconColor = disabled
+    ? theme.button[type].color.disable.label
+    : theme.button[type].color[color ?? 'primary'].label;
+
+  return (
+    <GayaTouchableRippleBase
+      color="highlight"
+      disabled={disabled}
+      hideOverflow
+      onPress={disabled ? undefined : onPress}
+      internal={{
+        touchableHighlight: {
+          style: {
+            borderRadius: tokens?.buttonBorderRadius,
+          },
+        },
+      }}
+    >
+      <Surface
+        accessibilityRole="button"
+        brand={brand}
+        color={color}
+        disabled={disabled}
+        mode={mode}
+        size={size}
+        type={type}
+      >
+        <LabelContainer iconPosition={iconPosition}>
+          <LabelText
+            textTransform={textTransform}
+            iconName={iconName}
+            iconPosition={iconPosition}
+            type={type}
+            brand={brand}
+            mode={mode}
+            color={color}
+            disabled={disabled}
+            {...internal?.labelText}
+          >
+            {text}
+          </LabelText>
+          {iconName && (
+            <GayaIconBase
+              disabled={disabled}
+              name={iconName}
+              size="small"
+              internal={{
+                text: { style: { color: iconColor } },
+              }}
+            />
+          )}
+        </LabelContainer>
+      </Surface>
+    </GayaTouchableRippleBase>
+  );
+};
+
+export const GayaButton = (dirtyProps: GayaButtonProps) => {
+  const { internal, ...props }: GayaButtonBaseProps = dirtyProps;
+  return <GayaButtonBase {...props} />;
+};

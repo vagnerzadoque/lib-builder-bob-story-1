@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-// import { Theme } from '@naturacosmeticos/natds-themes/react-native';
-import { Theme } from '../../common/theme';
+import 'styled-components/native';
+import { Theme } from '@naturacosmeticos/natds-themes/react-native';
 
-declare module 'styled-components' {
+declare module 'styled-components/native' {
   export interface DefaultTheme extends Theme {}
 }

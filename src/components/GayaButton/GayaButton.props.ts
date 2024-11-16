@@ -1,22 +1,8 @@
 import { IconName } from '@naturacosmeticos/natds-icons';
 import { BrandTypes } from '../../common/brandTypes';
-import { AccessibilityProps, StyleProp, TextStyle } from 'react-native';
-import { Theme } from '@naturacosmeticos/natds-themes/react-native';
+import { StyleProp, TextStyle } from 'react-native';
 
-type AccessibilityButtonProps = Pick<
-  AccessibilityProps,
-  | 'accessibilityActions'
-  | 'onAccessibilityAction'
-  | 'accessibilityState'
-  | 'accessibilityHint'
-  | 'accessibilityLabel'
->;
-export interface GayaButtonBaseProps extends GayaButtonProps {
-  theme: Theme;
-  textLabelStyle?: StyleProp<TextStyle>;
-}
-
-export interface GayaButtonProps extends AccessibilityButtonProps {
+export interface GayaButtonBaseProps {
   /**
    * A disabled button is unusable and un-clickable.
    * The disabled attribute can be set to keep a user from clicking on the button until some
@@ -59,10 +45,6 @@ export interface GayaButtonProps extends AccessibilityButtonProps {
    */
   onPress: () => void;
   /**
-   * Optional ID for testing.
-   */
-  testID?: string;
-  /**
    * This defines the height of the button, according to corresponding theme Size token.
    *
    * - Available sizes: `semi`, `semiX`, `medium`.
@@ -84,5 +66,9 @@ export interface GayaButtonProps extends AccessibilityButtonProps {
    */
   type?: 'contained' | 'outlined' | 'ghost' | 'tonal';
 
-  textLabelStyle?: StyleProp<TextStyle>;
+  internal?: {
+    labelText?: { style: StyleProp<TextStyle> };
+  };
 }
+
+export type GayaButtonProps = Omit<GayaButtonBaseProps, 'internal'>;
