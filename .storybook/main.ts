@@ -70,6 +70,28 @@ const config: StorybookConfig = {
 
     return config;
   },
+  managerHead: (head) => `
+  ${head}
+  <style>
+    /* Menu dropdown do toolbar */
+    .os-content button[role="menuitem"] {
+      color: #CCCCCC; /* Cor do texto não selecionado */
+      background-color: transparent; /* Fundo padrão */
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+    .os-content button[role="menuitem"]:hover {
+      background-color: #444444; /* Fundo no hover */
+      color: #FF4785; /* Cor do texto no hover */
+    }
+    .os-content button[role="menuitem"][aria-checked="true"] {
+      background-color: #1EA7FD; /* Fundo do item selecionado */
+      color: #FFFFFF; /* Cor do texto do item selecionado */
+    }
+  </style>
+`,
 };
+
+
 
 export default config;
