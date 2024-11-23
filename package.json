@@ -1,6 +1,6 @@
 {
   "name": "react-native-lib-builder-bob-story-2",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "biblioteca-builder-with-story-2",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
@@ -123,7 +123,6 @@
     "example"
   ],
   "packageManager": "yarn@3.6.1",
-
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
