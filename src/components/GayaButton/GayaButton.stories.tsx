@@ -6,29 +6,15 @@ import { View } from 'react-native';
 import { BrandTypes, brands } from '../../common/brandTypes';
 import { icons } from '@naturacosmeticos/natds-icons';
 
-const description =  `
-> O GaYaButton faz parte da evolução contínua dos componentes do GaYa Design System. Lançado como um novo componente, o GaYaButton substitui o antigo Button, que permanecerá disponível para uso, mas não receberá mais atualizações ou suporte ativo. 
-Recomendamos a migração para o GayaButton o mais rápido possível para aproveitar as melhorias e garantir a compatibilidade futura.
-
-## Propriedades
-| Figma         | Property         | Values                                                                             |    Status           |
-|---               |---               |                                                                                 ---|                  ---|
-| **hierarchy**      | **type**         | contained, outlined, ghost, tonal                                                  | ✅ Disponível        |
-| **textTranform** | **textTranform** | uppercase, lowercase,  capitalize                                                  | ✅ Disponível         |
-| **Size**         | **size**         | semi, semiX, medium                                                                | ✅ Disponível        |
-| **Icon**         | **iconName**     | 'icon_name'                                                                        | ✅ Disponível        |
-| **Disabled**     | **disabled**     | true, false                                                                        | ✅ Disponível        |
-| **Display**      | **display **     | inline, block                                                                      | ❌ Não aplicável   |
-| **--**           | **brand**        | avon, avon_v2, natura, natura_v2, natura_v3, theBodyShop, <br /> consultoriaDeBeleza, casaEestilo, casaEestilo_v2, forcaDeVendas            | ✅ Disponível        |
-| **color**        | **color**        | primary, onPrimary, secondary, onSecondary, neutral, inverse                        | ✅ Disponível        |
-
-## Exemplos de usos
-`
+const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4793008336/Componente+Button)`;
 
 const meta: Meta<typeof GayaButtonBase> = {
-  title: 'GaYa Button',
+  title: 'GayaButton',
   component: GayaButtonBase,
   parameters: {
+    controls: {
+      sort: 'alpha',
+    },
     docs: {
       description: {
         component: description,
@@ -39,45 +25,64 @@ const meta: Meta<typeof GayaButtonBase> = {
   tags: ['autodocs'],
   argTypes: {
     internal: {
-      control: false,
       table: {
         disable: true,
       },
     },
-    iconName: {
-      name: 'Icon Name',
-      description: 'Selecione o nome do ícone',
+    disabled: {
       control: {
-        type: 'select', // Define o controle como 'select'
+        type: 'boolean',
       },
-      options: Object.keys(icons), // Fornece a lista de opções
-      defaultValue: 'outlined-default-mockup', // Defina um valor padr // Forneça as opções explicitamente
     },
-  }
+    iconName: {
+      control: {
+        type: 'select',
+      },
+      options: Object.keys(icons),
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Interactive: Story = {
+  argTypes: {
+    brand: {
+      table: {
+        category: 'Legacy Props',
+      },
+    },
+    mode: {
+      table: {
+        category: 'Legacy Props',
+      },
+    },
+  },
   args: {
+    color: 'primary',
+    disabled: false,
+    iconPosition: 'right',
     onPress: () => undefined,
+    size: 'medium',
     text: 'GaYa Button',
+    type: 'contained',
   },
 };
 
-const withCustomTheme: Decorator = (Story, context) => {
+const withGayaProvider: Decorator = (Story, context) => {
   const { brand, mode, ...restArgs } = context.args;
   const newContext = { ...context, args: restArgs };
-  const modeN = mode != "undefined" ? mode : 'light'
+
   return (
     <>
       <View style={{ marginBottom: 16 }}>
-        <View>Tema Global</View>
-        <GayaButton text="GayaButton" onPress={() => undefined} {...restArgs} />
+        <span>Global Theme</span>
+        {/* @ts-ignore */}
+        <GayaButton {...restArgs} />
       </View>
-      <GayaProvider brand={brand as BrandTypes} mode={modeN as 'light' | 'dark'}>
-        <View>GaYa Provider</View>
+      <GayaProvider brand={brand as BrandTypes} mode={mode as 'light' | 'dark'}>
+        <span>GaYa Provider</span>
         <Story {...newContext} />
       </GayaProvider>
     </>
@@ -88,59 +93,116 @@ export const InteractiveWithGayaProvider: Story = (
   args: React.ComponentProps<typeof GayaButtonBase>
 ) => <GayaButtonBase {...args} />;
 
-InteractiveWithGayaProvider.decorators = [withCustomTheme];
+InteractiveWithGayaProvider.decorators = [withGayaProvider];
+
+InteractiveWithGayaProvider.argTypes = {
+  brand: {
+    table: {
+      category: 'Gaya Provider Props',
+    },
+  },
+  mode: {
+    table: {
+      category: 'Gaya Provider Props',
+    },
+  },
+};
 
 InteractiveWithGayaProvider.args = {
-  brand: 'avon_v2',
-  iconName: 'outlined-default-mockup',
+  brand: 'natura_v2',
+  color: 'primary',
+  disabled: false,
+  iconPosition: 'right',
+  mode: 'light',
   onPress: () => undefined,
+  size: 'medium',
   text: 'GaYa Button',
-};
-InteractiveWithGayaProvider.args = {
-  brand: 'avon',
-  iconName: 'outlined-default-mockup',
-  onPress: () => undefined,
-  text: 'GaYa Button',
+  type: 'contained',
 };
 
-// All Collor //
-
-const withfixedAllThemes: Decorator = (Story, context) => {
-  const { ...restArgs } = context.args;
+const withAllThemesAndTypes: Decorator = (Story, context) => {
+  const { brand, mode, type, ...restArgs } = context.args;
   const newContext = { ...context, args: restArgs };
-
   const backgroundValue = newContext.globals.backgrounds?.value;
-  const mode = backgroundValue === '#000000' ? 'dark' : 'light';
 
   return (
-    <View style={{ gap: 10 }}>
-      {
-        brands.map((brand) => {
-          return (
-            <>
-            <GayaProvider brand={brand.value as BrandTypes} mode={mode as 'light' | 'dark'}>
-              <View style={{ display: "flex", flexDirection: 'row', gap: 5, flexWrap: 'nowrap', justifyContent: 'space-between' }}>
-                <GayaButton size="medium" type="contained" text={'GaYaButton'} onPress={() => undefined} />
-                <GayaButton size="medium" type="outlined" text={'GaYaButton'} onPress={() => undefined} />
-                <GayaButton size="medium" type="ghost" text={'GaYaButton'} onPress={() => undefined} />
-                <GayaButton size="medium" type="tonal" text={'GaYaButton'} onPress={() => undefined} />
+    <View style={{ gap: 12 }}>
+      {brands.map((brand) => {
+        return (
+          <GayaProvider
+            brand={brand.value as BrandTypes}
+            mode={backgroundValue === '#000000' ? 'dark' : 'light'}
+            key={brand.value}
+          >
+            <View style={{ gap: 8 }}>
+              <span>{brand.name}</span>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: 12,
+                  flexWrap: 'nowrap',
+                  justifyContent: 'space-between',
+                }}
+              >
+                <View style={{ gap: 4 }}>
+                  <span>contained</span>
+                  {/* @ts-ignore */}
+                  <GayaButton type="contained" {...newContext.args} />
+                </View>
+                <View style={{ gap: 4 }}>
+                  <span>outlined</span>
+                  {/* @ts-ignore */}
+                  <GayaButton type="outlined" {...newContext.args} />
+                </View>
+                <View style={{ gap: 4 }}>
+                  <span>ghost</span>
+                  {/* @ts-ignore */}
+                  <GayaButton type="ghost" {...newContext.args} />
+                </View>
+                <View style={{ gap: 4 }}>
+                  <span>tonal</span>
+                  {/* @ts-ignore */}
+                  <GayaButton type="tonal" {...newContext.args} />
+                </View>
               </View>
-            </GayaProvider>
-            </>
-
-          )
-        })
-      }
+            </View>
+          </GayaProvider>
+        );
+      })}
     </View>
-  )
+  );
 };
 
-export const StaticAllThemes: Story = (
+export const AllThemesAndTypes: Story = (
   args: React.ComponentProps<typeof GayaButtonBase>
 ) => <GayaButtonBase {...args} />;
 
-StaticAllThemes.parameters = {
-  controls: { disable: true },
+AllThemesAndTypes.decorators = [withAllThemesAndTypes];
+
+AllThemesAndTypes.argTypes = {
+  brand: {
+    table: {
+      disable: true,
+    },
+  },
+  mode: {
+    table: {
+      disable: true,
+    },
+  },
+  type: {
+    table: {
+      disable: true,
+    },
+  },
 };
 
-StaticAllThemes.decorators = [withfixedAllThemes]
+AllThemesAndTypes.args = {
+  color: 'primary',
+  disabled: false,
+  iconPosition: 'right',
+  onPress: () => undefined,
+  size: 'medium',
+  text: 'GaYa Button',
+};

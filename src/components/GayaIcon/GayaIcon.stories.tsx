@@ -5,28 +5,15 @@ import { GayaIconBase } from './GayaIcon';
 import { icons, iconNames, IconName } from '@naturacosmeticos/natds-icons';
 import { View } from 'react-native';
 
-const description = `
-> A helper component to display icons from @naturacosmeticos/natds-icons package
-
-## Properties
-| Property                | Values                                                        |    Status    |
-|-------------------------|---------------------------------------------------------------|--------------|
-| **color**               | color-tokens                                                  | ✅ Available |
-| **size**                | none, micro, tiny, small, standard, semi, semiX, medium       | ✅ Available |
-| **name**                | icon-name                                                     | ✅ Available |
-| **accessibilityHint**   | string                                                        | ✅ Available |
-| **accessibilityLabel**  | string                                                        | ✅ Available |
-| **accessibilityRole**   | imagebutton, image                                            | ✅ Available |
-
-## Technical Usages Examples
-`;
-
-
+const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4792811853/Componente+Icon)`;
 
 const meta = {
-  title: 'GaYa Icon',
+  title: 'GayaIcon',
   component: GayaIconBase,
   parameters: {
+    controls: {
+      sort: 'alpha',
+    },
     docs: {
       description: {
         component: description,
@@ -36,29 +23,35 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    name: {
-      name: 'name',
-      description: 'Selecione o nome do ícone',
-      control: {
-        type: 'select', // Define o controle como 'select'
-      },
-      options: Object.keys(icons), // Fornece a lista de opções
-      defaultValue: 'outlined-default-mockup', // Defina um valor padr // Forneça as opções explicitamente
-    },
     internal: {
-      control: false,
       table: {
         disable: true,
       },
     },
-  }
+    disabled: {
+      control: {
+        type: 'boolean',
+      },
+    },
+    name: {
+      control: {
+        type: 'select',
+      },
+      options: Object.keys(icons),
+    },
+  },
 } satisfies Meta<typeof GayaIconBase>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Interactive: Story = {
-  args: {},
+  args: {
+    color: 'primary',
+    disabled: false,
+    name: 'outlined-default-mockup',
+    size: 'standard',
+  },
 };
 
 export interface OptionProps {
@@ -85,21 +78,21 @@ export const SearchIcon = () => {
       <div
         style={{
           display: 'flex',
-          gap: '5px',
+          gap: '4px',
           boxSizing: 'border-box',
-          padding: '10px',
         }}
       >
-        <View>Total de Ícones</View>
-        <View>{filterOptionsN.length}</View>
+        <p>{`Total de Ícones: ${filterOptionsN.length}`}</p>
       </div>
       <View>
         <div style={{ display: 'flex', gap: 20 }}>
           <div style={{ minWidth: 280 }}>
             <input
               style={{ width: 190, height: 30, padding: 8 }}
-              //@ts-ignore
-              onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                //@ts-ignore
+                setValue(e.target.value)
+              }
               value={value}
               placeholder="Pesquisar ícones..."
             />
@@ -127,12 +120,15 @@ export const SearchIcon = () => {
                     width: '180px',
                   }}
                 >
-                  <GayaIconBase color="primary" name={names.value as IconName} />
+                  <GayaIconBase
+                    color="primary"
+                    name={names.value as IconName}
+                  />
                   <p>{names.value}</p>
                 </div>
               ))
             ) : (
-              <div>Nenhum ícone encontrado</div>
+              <div>Nenhum ícone encontrado.</div>
             )}
           </div>
         </div>

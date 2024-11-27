@@ -17,6 +17,7 @@ export type Brand =
   | 'natura_v3'
   | 'casaEestilo'
   | 'casaEestilo_v2';
+
 export interface ThemeSelector {
   // eslint-disable-next-line no-unused-vars
   (theme: Theme): string | number | undefined;
