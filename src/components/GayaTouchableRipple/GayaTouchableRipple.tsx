@@ -16,7 +16,7 @@ export const GayaTouchableRippleBase = ({
 }: GayaTouchableRippleBaseProps) => {
   const theme = useTheme();
   const getColorByName = theme.color[color];
-  const getColorOpacity = String(theme.opacity.medium);
+  const getColorOpacity = theme.opacity.medium;
 
   return (
     <TouchableHighlight
