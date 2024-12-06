@@ -61,7 +61,7 @@ export const LabelText = styled.Text<LabelProps>(
       fontSize: theme.button.label.fontSize,
       fontWeight: theme.button.label.primary.fontWeight,
       letterSpacing: theme.button.label.letterSpacing,
-      lineHeight: 19,
+      lineHeight: '19px',
       marginEnd: iconName && iconPosition === 'right' ? theme.spacing.tiny : 0,
       marginStart: iconName && iconPosition === 'left' ? theme.spacing.tiny : 0,
       textTransform: textTransform || tokens?.textTransform,
