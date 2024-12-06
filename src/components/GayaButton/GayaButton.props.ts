@@ -64,7 +64,7 @@ export interface GayaButtonBaseProps {
    * - Available types: `contained`, `outlined`, `text`.
    * @default `contained`
    */
-  type?: 'contained' | 'outlined' | 'ghost' | 'tonal';
+  type?: 'filled'|'contained' | 'outlined' | 'ghost' | 'tonal'| 'text';
 
   internal?: {
     labelText?: { style: StyleProp<TextStyle> };
