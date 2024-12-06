@@ -30,10 +30,31 @@ const meta: Meta<typeof GayaButtonBase> = {
         disable: true,
       },
     },
+    color: {
+      control: { type: 'select' },
+      options: ['primary', 'onPrimary', 'secondary', 'onSecondary', 'neutral', 'inverse'],
+    },
+    iconPosition: {
+      control: { type: 'radio' },
+      options: ['left', 'right'],
+    },
+    textTransform: {
+    
+      control: { type: 'radio' },
+      options: ['uppercase' , 'lowercase' , 'capitalize'],
+    },
+    size: {
+      control: { type: 'radio' },
+      options: ['semi' , 'semiX' , 'medium'],
+    },
     disabled: {
       control: {
         type: 'boolean',
       },
+    },
+    mode: {
+      control: { type: 'radio' },
+      options: ['light' , 'dark'],
     },
     iconName: {
       control: {
@@ -41,7 +62,7 @@ const meta: Meta<typeof GayaButtonBase> = {
       },
       options: Object.keys(icons),
     },
-  },
+  }
 };
 
 export default meta;
@@ -67,7 +88,7 @@ export const Interactive: Story = {
     onPress: () => undefined,
     size: 'medium',
     text: 'GaYa Button',
-    type: 'contained',
+    type: 'filled',
   },
 };
 
@@ -97,9 +118,9 @@ const withAllThemesAndTypes: Decorator = (Story, context) => {
                 }}
               >
                 <View style={{ gap: 4 }}>
-                  <span>contained</span>
+                  <span>filled</span>
                   {/* @ts-ignore */}
-                  <GayaButton type="contained" {...newContext.args} />
+                  <GayaButton type="filled" {...newContext.args} />
                 </View>
                 <View style={{ gap: 4 }}>
                   <span>outlined</span>
