@@ -8,7 +8,7 @@ import { View } from 'react-native';
 const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4792811853/Componente+Icon)`;
 
 const meta = {
-  title: 'GayaIcon',
+  title: 'Componentes/GayaIcon',
   component: GayaIconBase,
   parameters: {
     controls: {

@@ -50,7 +50,7 @@ export const checkTheme = (theme: Theme) => {
 
 export const buildColorWithOpacity = (
   colorSelector: string,
-  opacitySelector: string
+  opacitySelector: number
 ) => {
   const colorHex = colorSelector;
   const opacityScaleOne = opacitySelector;

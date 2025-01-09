@@ -48,7 +48,7 @@ export const GayaButtonBase = ({
       }}
     >
       <Surface
-        accessibilityRole="button"
+        role="button"
         brand={brand}
         color={color}
         disabled={disabled}

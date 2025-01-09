@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableHighlight } from 'react-native';
+import { Pressable } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import { buildColorWithOpacity } from '../../common/theme';
 import {
@@ -16,17 +16,23 @@ export const GayaTouchableRippleBase = ({
 }: GayaTouchableRippleBaseProps) => {
   const theme = useTheme();
   const getColorByName = theme.color[color];
-  const getColorOpacity = String(theme.opacity.medium);
+  const getColorOpacity = theme.opacity.medium;
+  
+  // Cor que será aplicada ao pressionar
+  const pressedColor = buildColorWithOpacity(getColorByName, getColorOpacity);
 
   return (
-    <TouchableHighlight
+    <Pressable
       disabled={disabled}
       onPress={onPress}
-      underlayColor={buildColorWithOpacity(getColorByName, getColorOpacity)}
-      {...internal?.touchableHighlight}
+      style={({ pressed }) => [
+        internal?.touchableHighlight?.style,
+        { backgroundColor: pressed ? pressedColor : 'transparent' },
+      ]}
+      
     >
       {children}
-    </TouchableHighlight>
+    </Pressable>
   );
 };
 
