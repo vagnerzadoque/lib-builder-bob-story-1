@@ -6,7 +6,9 @@ export type BrandTypes =
   | 'natura'
   | 'theBodyShop'
   | 'consultoriaDeBeleza'
+  | 'consultoriaDeBeleza_v2'
   | 'forcaDeVendas'
+  | 'forcaDeVendas_v2'
   | 'natura_v2'
   | 'natura_v3'
   | 'casaEestilo'
@@ -21,7 +23,9 @@ export const brands = [
   { name: 'Natura-V3', value: 'natura_v3' },
   { name: 'The Body Shop', value: 'theBodyShop' },
   { name: 'Consultoria de Beleza', value: 'consultoriaDeBeleza' },
+  { name: 'Consultoria de Beleza-V2', value: 'consultoriaDeBeleza_v2' },
   { name: 'Força de Vendas', value: 'forcaDeVendas' },
+  { name: 'Força de Vendas-V2', value: 'forcaDeVendas_v2' },
   { name: 'Casa & Estilo', value: 'casaEestilo' },
   { name: 'Casa & Estilo-V2', value: 'casaEestilo_v2' },
 ];
