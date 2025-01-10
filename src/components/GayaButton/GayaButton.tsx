@@ -19,7 +19,7 @@ export const GayaButtonBase = ({
   size = 'medium',
   text,
   textTransform,
-  type = 'contained',
+  type = 'filled',
 }: GayaButtonBaseProps) => {
   const ctxTheme = useTheme();
   const theme = brand ? buildTheme(brand, mode) : ctxTheme;
