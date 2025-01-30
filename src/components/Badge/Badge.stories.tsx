@@ -30,7 +30,7 @@ const description = `
 // 1) Definição do meta (Storybook 8) com args e argTypes
 // -------------------------------------------------------
 const meta: Meta<typeof Badge> = {
-  title: 'Components/Badge',
+  title: 'Componentes/Badge',
   component: Badge,
   // Aqui definimos valores padrão para os controles (args).
   // Dessa forma, qualquer story que não sobrescrever esses valores
