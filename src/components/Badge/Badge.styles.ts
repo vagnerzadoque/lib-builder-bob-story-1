@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components/native'
 import { CSSObject } from 'styled-components'
 import {
