@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ReactNode } from 'react'
 import { CSSObject } from 'styled-components'
 import styled from 'styled-components/native'
