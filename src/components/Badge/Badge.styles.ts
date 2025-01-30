@@ -1,78 +1,88 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components/native'
-import { CSSObject } from 'styled-components'
-import {
-  buildTheme,
-  Theme
-} from '../../common/theme'
-
+import { buildTheme, Theme } from '../../common/theme'
 import { BadgeColors } from './Badge.types'
 import { BrandTypes } from '../../common/brandTypes'
 
-type BadgeStyleProps = {
-  color: BadgeColors;
-  variant: BadgeVariant;
-  theme: Theme;
-  brand?: BrandTypes;
-}
-
 export type BadgeVariant = 'standard' | 'pulse' | 'dot'
 
-const getThemeBadge = (theme: Theme) => ({ color, brand }: Pick<BadgeStyleProps, 'brand'|'color' >) => {
-  if (brand) {
-    const themeSelected = buildTheme(brand, 'light')
+export interface BadgeStyleProps {
+  theme: Theme
+  color: BadgeColors
+  variant?: BadgeVariant
+  brand?: BrandTypes
+}
+
+const convertPulseToDot = (variant: BadgeVariant) =>
+  variant === 'pulse' ? 'dot' : variant
+
+const getThemeBadge = (theme: Theme) => 
+  ({ color, brand }: Pick<BadgeStyleProps, 'color' | 'brand'>) => {
+    if (brand) {
+      const themeSelected = buildTheme(brand, 'light')
+      return {
+        back: themeSelected.badge.color[color].background,
+        label: themeSelected.badge.color[color].label
+      }
+    }
     return {
-      back: themeSelected.badge.color[color].background,
-      label: themeSelected.badge.color[color].label
+      back: theme.badge.color[color].background,
+      label: theme.badge.color[color].label
     }
   }
-  return {
-    back: theme.badge.color[color].background,
-    label: theme.badge.color[color].label
+
+function getHorizontalPadding(variant: BadgeVariant, theme: Theme) {
+  if (variant === 'standard') {
+    return { paddingHorizontal: theme.spacing.micro }
   }
+  return {}
 }
-export const convertPulseToDot = (variant: BadgeVariant) => (variant === 'pulse' ? 'dot' : variant)
 
-export const getHorizontalPadding = (variant: BadgeVariant, theme: Theme) => (
-  variant === 'standard' && {
-    paddingHorizontal: theme.spacing.micro
+function getWidthByVariant(variant: BadgeVariant, theme: Theme) {
+  if (variant !== 'standard') {
+    const h = theme.badge[convertPulseToDot(variant)].height
+    return { width: h }
   }
-)
+  return {}
+}
 
-export const getWidthByVariant = (variant: BadgeVariant, theme: Theme) => (
-  variant !== 'standard' && {
-    width: theme.badge[convertPulseToDot(variant)].height
-  }
-)
-
-export const Container = styled.View(() => ({
+export const Container = styled.View({
   alignContent: 'center',
   alignItems: 'center'
-}))
+})
 
-export const BadgeBase = styled.View(({
-  theme, color, variant = 'standard', brand
-}: any): CSSObject => ({
-  ...getWidthByVariant(variant, theme),
-  backgroundColor: getThemeBadge(theme)({ color, brand }).back,
-  borderRadius: theme.badge[convertPulseToDot(variant)].borderRadius,
-  height: theme.badge[convertPulseToDot(variant)].height
-}))
+export const BadgeBase = styled.View<BadgeStyleProps>(
+  ({ theme, color, variant = 'standard', brand }) => {
+    const { back } = getThemeBadge(theme)({ color, brand })
 
-export const Circle = styled(BadgeBase)(({ theme, variant = 'standard' }: any): CSSObject => ({
-  ...getHorizontalPadding(variant, theme),
-  alignContent: 'center',
-  justifyContent: 'center'
-}))
+    return {
+      ...getWidthByVariant(variant, theme),
+      backgroundColor: back, // <-- se der erro, force as string: (back as string)
+      borderRadius: theme.badge[convertPulseToDot(variant)].borderRadius,
+      height: theme.badge[convertPulseToDot(variant)].height
+    }
+  }
+)
 
-export const Label = styled.Text(({
-  theme, color, variant = 'standard', brand
-}: any): CSSObject => ({
-  color: getThemeBadge(theme)({ color, brand }).label,
-  fontFamily: theme.badge.label.primary.fontFamily,
-  fontSize: theme.badge.label.fontSize,
-  fontWeight: theme.badge.label.primary.fontWeight,
-  letterSpacing: theme.badge.label.letterSpacing,
-  lineHeight: theme.badge[convertPulseToDot(variant)].height,
-  textAlignVertical: 'center'
-}))
+export const Circle = styled(BadgeBase)<BadgeStyleProps>(
+  ({ theme, variant = 'standard' }) => ({
+    ...getHorizontalPadding(variant, theme),
+    alignContent: 'center',
+    justifyContent: 'center'
+  })
+)
+
+export const Label = styled.Text<BadgeStyleProps>(
+  ({ theme, color, variant = 'standard', brand }) => {
+    const { label } = getThemeBadge(theme)({ color, brand })
+
+    return {
+      color: label, // idem, se preciso => (label as string)
+      fontFamily: theme.badge.label.primary.fontFamily,
+      fontSize: theme.badge.label.fontSize,
+      fontWeight: theme.badge.label.primary.fontWeight,
+      letterSpacing: theme.badge.label.letterSpacing,
+      lineHeight: theme.badge[convertPulseToDot(variant)].height,
+      textAlignVertical: 'center'
+    }
+  }
+)
