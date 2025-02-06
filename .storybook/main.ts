@@ -35,15 +35,19 @@ const config: StorybookConfig = {
     },
   },
   webpackFinal: async (config: Configuration) => {
+    // 1) Ajuste aliases para Web
     config.resolve = {
       ...(config.resolve || {}),
       alias: {
         ...(config.resolve?.alias || {}),
         'react-native$': 'react-native-web',
         'styled-components/native$': 'styled-components',
+        'react-native-svg': 'react-native-svg-web',
       },
     };
 
+    // 2) Localize a regra que processa .js e inclua 'react-native' se necessário
+    //    (Alguns setups do Storybook já vêm com Babel, mas sem incluir react-native)
     const babelLoaderRule = config.module?.rules?.find(
       (rule) =>
         typeof rule !== 'string' &&
@@ -57,37 +61,34 @@ const config: StorybookConfig = {
         babelLoaderRule.include = [];
       }
       if (Array.isArray(babelLoaderRule.include)) {
+        // Adicione o react-native e (opcional) react-native-svg
         babelLoaderRule.include.push(/node_modules\/react-native/);
+        babelLoaderRule.include.push(/node_modules\/react-native-svg/);
       } else {
         babelLoaderRule.include = [
           babelLoaderRule.include,
           /node_modules\/react-native/,
+          /node_modules\/react-native-svg/,
         ];
       }
     }
 
+    // 3) Adicione também uma regra explícita para .js dentro de node_modules/react-native,
+    //    usando babel-loader + metro preset. Isso garante que a sintaxe Flow/Type seja removida.
+    config.module?.rules?.push({
+      test: /\.m?js$/,
+      include: /node_modules\/(react-native|react-native-svg)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          // O preset que sabe lidar com Flow e "import type" de RN
+          presets: ['module:metro-react-native-babel-preset'],
+        },
+      },
+    });
+
     return config;
   },
-  // managerHead: (head) => `
-  //   ${head}
-  //   <style>
-  //     /* Menu dropdown do toolbar */
-  //     .os-content button[role="menuitem"] {
-  //       color: #CCCCCC; /* Cor do texto não selecionado */
-  //       background-color: transparent; /* Fundo padrão */
-  //       padding: 8px 12px;
-  //       border-radius: 4px;
-  //     }
-  //     .os-content button[role="menuitem"]:hover {
-  //       background-color: #444444; /* Fundo no hover */
-  //       color: #FF4785; /* Cor do texto no hover */
-  //     }
-  //     .os-content button[role="menuitem"][aria-checked="true"] {
-  //       background-color: #1EA7FD; /* Fundo do item selecionado */
-  //       color: #FFFFFF; /* Cor do texto do item selecionado */
-  //     }
-  //   </style>
-  // `,
 };
 
 export default config;
