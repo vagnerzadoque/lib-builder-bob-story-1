@@ -11,21 +11,20 @@ const webStoryMessage = Platform.OS === 'web'
   ? ' (the effect can only be rendered within the native platforms)' 
   : '';
 
-const description = `
-> Informs the user of image content with possible resources for greater interaction
-
-## Properties
-| Property                | Values                                         |    Status    |
-|---                      |                                             ---|           ---|
-| **variant**             | standard, highlight                            | ✅ Available |
-| **radius**              | none, medium, circle                           | ✅ Available |
-| **fade**                | top, left, right, bottom                       | ✅ Available |
-| **source**              | string, ImageSourcePropType                    | ✅ Available |
-| **fallback**            | (is available using the native onError method) | ✅ Available |
-
-
-## Technical Usages Examples
-`;
+  const description = `
+  > Informs the user of image content with possible resources for greater interaction
+  
+  ## Properties
+  | Prop-Figma    | Property     | Values                                         |    Status    |
+  |---------------|--------------|------------------------------------------------|--------------|
+  | **variant**   | **variant**  | standard, highlight                            | ✅ Available |
+  | **radius**    | **radius**   | none, medium, circle                           | ✅ Available |
+  | **fade**      | **fade**     | top, left, right, bottom                       | ✅ Available |
+  | **source**    | **source**   | string, ImageSourcePropType                    | ✅ Available |
+  | **fallback**  | **fallback** | (is available using the native onError method) | ✅ Available |
+  
+  ## Technical Usages Examples
+  `;
 
 
 const meta: Meta<typeof Image> = {
@@ -87,10 +86,7 @@ export const Interactive: Story = {
   ),
 };
 
-/**
- * Os demais exports podem continuar do jeito antigo,
- * ou podem ser convertidos para o formato de StoryObj
- */
+
 
 export const Variants = () => (
   <StoryWrapper title="Variants">
