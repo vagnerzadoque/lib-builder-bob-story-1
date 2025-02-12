@@ -14,14 +14,49 @@ const webStoryMessage = Platform.OS === 'web'
   const description = `
   > Informs the user of image content with possible resources for greater interaction
   
-  ## Properties
-  | Prop-Figma    | Property     | Values                                         |    Status    |
-  |---------------|--------------|------------------------------------------------|--------------|
-  | **variant**   | **variant**  | standard, highlight                            | ✅ Available |
-  | **radius**    | **radius**   | none, medium, circle                           | ✅ Available |
-  | **fade**      | **fade**     | top, left, right, bottom                       | ✅ Available |
-  | **source**    | **source**   | string, ImageSourcePropType                    | ✅ Available |
-  | **fallback**  | **fallback** | (is available using the native onError method) | ✅ Available |
+  ## Props
+  | Prop-Figma    | Prop         |     Status    |
+  |---------------|--------------|---------------|
+  | **-------**   | **variant**  |  ❌ Inconsistent name  |
+  | **radius**    | **radius**   |  ❌ Inconsistent value |
+  | **fade**      | **fade**     |  ❌ Inconsistent value |
+  | **source**    | **source**   |  ❌ Inconsistent name  |
+  | **fallback**  | **fallback** |  ✅ Available (is available using the native onError method) |
+  
+
+  ## Props / Values
+  | ** Figma: variant**   | ** Stack: variant**  |
+  |-----------------------|----------------------|
+  | --------              | standard             |
+  | ---------             | highlight            |
+
+  | ** Figma: radius**   | ** Stack: radius**    |
+  |-----------------------|----------------------|
+  | none,                 | none,                |
+  | medium                | medium               |
+  | circle                | circle               |
+  | small                 | ------               |
+
+  | ** Figma: fade**   | ** Stack: fade**    |
+  |-----------------------|----------------------|
+  | top,                  | top,                 |
+  | left                  | left                 |
+  | right                 | right                |
+  | bottom                | bottom               |
+  | none                  | ------               |
+  | default               | ------               |
+
+
+  | ** Figma: -------**   | ** Stack: source**    |
+  |-----------------------|----------------------|
+  | ------,               | string,              |
+  | -------------------   | ImageSourcePropType  |
+
+
+  | ** Figma: fallback**                             |   ** Stack: fallback**                         |
+  |--------------------------------------------------|------------------------------------------------|
+  | (is available using the native onError method)   | (is available using the native onError method) |
+  
   
   ## Technical Usages Examples
   `;

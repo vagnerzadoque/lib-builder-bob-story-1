@@ -7,7 +7,74 @@ import { View } from 'react-native';
 import { BrandTypes, brands } from '../../common/brandTypes';
 import { icons } from '@naturacosmeticos/natds-icons';
 
-const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4793008336/Componente+Button)`;
+const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4793008336/Componente+Button)
+
+> O GaYaButton faz parte da evolução contínua dos componentes do GaYa Design System. Lançado como um novo componente, o GaYaButton substitui o antigo Button, que permanecerá disponível para uso, mas não receberá mais atualizações ou suporte ativo. 
+Recomendamos a migração para o GayaButton o mais rápido possível para aproveitar as melhorias e garantir a compatibilidade futura.
+
+
+## Props
+  | Prop-Figma    | Prop                      |        Status           |
+  |---------------|---------------------------|-------------------------|
+  | **hierarchy** | **type**                  |  ❌ Inconsistent name   |
+  | **textTransform** | **textTransform**     |  ✅ Available           |
+  | **size**      | **size**                  |  ❌  Inconsistent value |
+  | **icon**      | **iconName**              |  ❌  Inconsistent name  |
+  | **disabled**  | **disabled**              |  ✅ Available           |
+  | **display**   | **display**               |  ❌ Não aplicável       |
+  | **color**     | **color**                 |  ✅ Available           |
+  | **-----**     | **brand**                 |  ✅ Available           |
+
+  ## Props / Values
+  | ** Figma: hierarchy** | ** Stack:   type**     |
+  |-----------------------|------------------------|
+  | filled                | filled                 |
+  | contained (deprecated)| contained (deprecated) |
+  | outlined              | outlined               |
+  | ghost                 | ghost                  |
+  | text    (deprecated)  | text   (deprecated)    |
+
+  | ** Figma: textTransform**   | ** Stack:   textTransform**     |
+  |-----------------------------|---------------------------------|
+  | uppercase                   | uppercase                       |
+  | lowercase                   | lowercase                       |
+  | capitalize                  | capitalize                      |
+
+  | ** Figma: size**            | ** Stack:   size**              |
+  |-----------------------------|---------------------------------|
+  | small                       | semi                            |
+  | medium                      | semiX                           |
+  | large                       | medium                          |
+
+  | ** Figma: icon**            | ** Stack:   iconName**          |
+  |-----------------------------|---------------------------------|
+  | string-name                 | string-name                     |
+    
+  | ** Figma: disabled**        | ** Stack:   disabled**          |
+  |-----------------------------|---------------------------------|
+  | true                        | true                            |
+  | true                        | false                           |
+
+  | ** Figma: color**           | ** Stack:   color**             |
+  |-----------------------------|---------------------------------|
+  | primary                     | primary                         |
+  | onPrimary                   | onPrimary                       |
+  | secondary                   | secondary                       |
+  | onSecondary                 | onSecondary                     |
+  | neutral                     | neutral                         |
+  | inverse                     | inverse                         |
+
+  | ** Figma: -----**           | ** Stack:   brand**             |
+  |-----------------------------|---------------------------------|
+  | temas disponiveis no GaYa   | temas disponiveis no GaYa       |
+ 
+
+
+## Exemplos de usos
+
+
+
+`;
 
 const meta: Meta<typeof GayaButtonBase> = {
   title: 'Componentes/GayaButton',

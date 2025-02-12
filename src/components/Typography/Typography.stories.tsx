@@ -11,10 +11,29 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 const description = `
 > Typography component for displaying text.
 
-## Properties
-| Property                  | Values                                              |    Status    |
-|---                        |                                                  ---|           ---|
-| **variant**               | heading1, heading2, heading3, heading4, heading5, <br /> heading6, subtitle1, subtitle2, body1, body2, caption, overline                                            | ✅ Available |
+
+## Props
+  | Prop-Figma    | Prop                      |        Status           |
+  |---------------|---------------------------|-------------------------|
+  | **-------**   | **variant**               |  ❌ Inconsistent name   |
+
+
+  ## Props / Values
+  | ** Figma: ---------** | ** Stack:   variant**  |
+  |-----------------------|------------------------|
+  | ------                | heading1               |
+  | ------                | heading2               |
+  | ------                | heading3               |
+  | ------                | heading4               |
+  | ------                | heading5               |
+  | ------                | subtitle1              |
+  | ------                | subtitle2              |
+  | ------                | body1                  |
+  | ------                | body2                  |
+  | ------                | caption                |
+  | ------                | overline               |
+
+
 
 ## Technical Usages Examples
 `
