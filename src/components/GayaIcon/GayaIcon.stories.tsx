@@ -5,7 +5,47 @@ import { GayaIconBase } from './GayaIcon';
 import { icons, iconNames, IconName } from '@naturacosmeticos/natds-icons';
 import { View } from 'react-native';
 
-const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4792811853/Componente+Icon)`;
+const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4792811853/Componente+Icon)
+
+> A helper component to display icons from @naturacosmeticos/natds-icons package
+
+
+
+## Props
+  | Prop-Figma    | Prop                      |        Status           |
+  |---------------|---------------------------|-------------------------|
+  | **size**      | **size**                  |  ✅ Available           |
+  | **----**      | **name**                  |  ❌  Inconsistent name  |
+  | **-----**     | **color**                 |  ❌  Inconsistent name  |
+
+  ## Props / Values
+  | ** Figma: ---------** | ** Stack:   color**    |
+  |-----------------------|------------------------|
+  | ------                | color-tokens           |
+
+  | ** Figma: ---------** | ** Stack:   name**     |
+  |-----------------------|------------------------|
+  | ------                | icons-name             |
+
+  | ** Figma: ---------** | ** Stack:   size**     |
+  |-----------------------|------------------------|
+  | ------                | none                   |
+  | ------                | micro                  |
+  | ------                | tiny                   |
+  | small                 | small                  |
+  | standard              | standard               |
+  | semi                  | semi                   |
+  | semiX                 | semiX                  |
+  | medium                | medium                 |
+
+
+  ## Accessibility
+| Property                | Values                  |
+|---                      |                      ---|
+| **accessibilityHint**   | string                  | 
+| **accessibilityLabel**  | string                  | 
+| **accessibilityLabel**  | imagebutton, image      | 
+`;
 
 const meta = {
   title: 'Componentes/GayaIcon',

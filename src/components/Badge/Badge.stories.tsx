@@ -9,18 +9,52 @@ import { BrandTypes, brands } from '../../common/brandTypes';
 const description = `
 > Badge is a visual indicator for numeric values.
 
-## Properties
-| Property                   | Values                                                                                            |    Status           |
-|---                         |                                                                                                ---|                  ---|
-| **variant**                | dot, pulse, standard                                                                              | ✅ Available        |
-| **accessible**             | true/false                                                                                        | ✅ Available        |
-| **accessibilityLabel**     | string                                                                                            | ✅ Available        |
-| **accessibilityRole**      | AccessibilityRole                                                                                 | ✅ Available        |
-| **accessibilityValue**     | accessibilityValue                                                                                | ✅ Available        |
-| **color**                  | primary, secondary, success, alert                                                                | ✅ Available        |
-| **limit**                  | number                                                                                            | ✅ Available        |
-| **value**                  | number                                                                                            | ✅ Available        |
-| **brand**                  | avon, avon_v2, natura, natura_v2, theBodyShop, <br /> consultoriaDeBeleza, casaEestilo            | ✅ Available        |
+
+
+## Props
+  | Prop-Figma    | Prop                      |        Status           |
+  |---------------|---------------------------|-------------------------|
+  | **-------**   | **variant**               |  ❌ Inconsistent name   |
+  | **state**     | **color**                 |  ❌ Inconsistent name   |
+  | **number**    | **limit**                 |  ❌ Inconsistent name   |
+  | **-------**   | **value**                 |  ❌ Inconsistent name   |
+  | **-------**   | **brand**                 |  ✅ Available           |
+
+  ## Props / Values
+  | ** Figma: ---------** | ** Stack:   variant**  |
+  |-----------------------|------------------------|
+  | ------                | dot                    |
+  | ------                | pulse                  |
+  | ------                | standard               |
+
+  | ** Figma: state**     | ** Stack:   color**    |
+  |-----------------------|------------------------|
+  | primary               | primary                |
+  | secondary             | secondary              |
+  | success               | success                |
+  | alert                 | alert                  |
+  | inverse               | -----                  |
+
+
+  | ** Figma: number**    | ** Stack:   limit**    |
+  |-----------------------|------------------------|
+  | number                | number                 |
+
+  | ** Figma: ------**    | ** Stack:   value**    |
+  |-----------------------|------------------------|
+  | -------               | number                 |
+
+   | ** Figma: -----**           | ** Stack:   brand**            |
+  |-----------------------------|---------------------------------|
+  | temas disponiveis no GaYa   | temas disponiveis no GaYa       |
+
+  ## Accessibility
+| Property                   | Values             |
+|---                         |                 ---| 
+| **accessible**             | true/false         | 
+| **accessibilityLabel**     | string             | 
+| **accessibilityRole**      | AccessibilityRole  | 
+| **accessibilityValue**     | accessibilityValue | 
 
 
 ## Technical Usages Examples
