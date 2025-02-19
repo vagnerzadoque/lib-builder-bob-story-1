@@ -3,9 +3,8 @@ import { View } from 'react-native'
 import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 import { Divider  } from './Divider'
 
-const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4793008336/Componente+Button)
+const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4792811832/Componente+Divider)
 
-> A divider is a thin line that groups content in lists and layouts.
 
 
 ## Props

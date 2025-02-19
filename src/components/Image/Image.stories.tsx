@@ -11,8 +11,7 @@ const webStoryMessage = Platform.OS === 'web'
   ? ' (the effect can only be rendered within the native platforms)' 
   : '';
 
-  const description = `
-  > Informs the user of image content with possible resources for greater interaction
+  const description = ` [Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4793204876/Componente+Image)
   
   ## Props
   | Prop-Figma    | Prop         |     Status    |
