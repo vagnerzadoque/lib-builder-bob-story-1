@@ -3,6 +3,7 @@ import { IconName, icons } from '@naturacosmeticos/natds-icons';
 import { GayaIconBaseProps, GayaIconProps } from './GayaIcon.props';
 import { Text } from 'react-native';
 import { useTheme } from 'styled-components/native';
+import { buildTheme } from '../../common/theme';
 
 const defaultIconName = 'outlined-default-mockup';
 
@@ -16,10 +17,11 @@ export const GayaIconBase = ({
   color = 'primary',
   disabled,
   internal,
+  brand,
   name = defaultIconName,
   size = 'standard',
 }: GayaIconBaseProps) => {
-  const theme = useTheme();
+  const theme = brand ? buildTheme(brand, "light") : useTheme();
   const unicodeName = checkIconName(name);
   const code = JSON.parse(`["${unicodeName}"]`)[0];
 

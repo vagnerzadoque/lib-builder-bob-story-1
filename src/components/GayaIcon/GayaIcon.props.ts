@@ -1,10 +1,15 @@
 import { IconName } from '@naturacosmeticos/natds-icons';
 import { Size, Color } from '@naturacosmeticos/natds-themes/react-native';
 import { StyleProp, TextStyle } from 'react-native';
+import { BrandTypes } from '../../common/brandTypes';
 
 export type IconSizesType = keyof Size;
 
 export interface GayaIconBaseProps {
+  /**
+   * Icon color
+   */
+  brand?: BrandTypes;
   /**
    * Icon color
    */
