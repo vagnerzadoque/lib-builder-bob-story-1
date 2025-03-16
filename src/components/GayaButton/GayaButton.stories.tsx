@@ -9,9 +9,6 @@ import { icons } from '@naturacosmeticos/natds-icons';
 
 const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4793008336/Componente+Button)
 
-> O GaYaButton faz parte da evolução contínua dos componentes do GaYa Design System. Lançado como um novo componente, o GaYaButton substitui o antigo Button, que permanecerá disponível para uso, mas não receberá mais atualizações ou suporte ativo. 
-Recomendamos a migração para o GayaButton o mais rápido possível para aproveitar as melhorias e garantir a compatibilidade futura.
-
 
 ## Props
   | Prop-Figma    | Prop                      |        Status           |
