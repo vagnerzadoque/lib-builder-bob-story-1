@@ -5,7 +5,7 @@ import { Divider  } from './Divider'
 
 const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4793008336/Componente+Button)
 
-> A divider is a thin line that groups content in lists and layouts.
+
 
 
 ## Props

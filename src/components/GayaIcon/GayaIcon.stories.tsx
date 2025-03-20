@@ -7,7 +7,7 @@ import { View } from 'react-native';
 
 const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4792811853/Componente+Icon)
 
-> A helper component to display icons from @naturacosmeticos/natds-icons package
+
 
 
 

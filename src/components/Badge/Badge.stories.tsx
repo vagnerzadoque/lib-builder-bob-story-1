@@ -6,8 +6,8 @@ import { StoryContainer, StoryWrapper } from '../../common/HelperComponents/Stor
 import { View } from 'react-native'
 import { BrandTypes, brands } from '../../common/brandTypes';
 
-const description = `
-> Badge is a visual indicator for numeric values.
+const description = ` [Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/5475631142/Figma+gayaBadge) 
+
 
 
 

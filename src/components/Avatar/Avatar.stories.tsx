@@ -2,14 +2,14 @@
 
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Avatar } from '.'; // <— seu componente
+import { Avatar } from '.'; 
 import { IconName, iconNames } from '@naturacosmeticos/natds-icons';
 
 import { StoryContainer, StoryWrapper } from '../../common/HelperComponents/StoryContainer';
 import NatAvatar from '../../assets/images/nat_avatar.jpg';
 import { BrandTypes, brands } from '../../common/brandTypes';
 import { View } from 'react-native';
-// Esta descrição será exibida na aba de Docs do Storybook
+
 const description = ` [Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4792877223/Componente+Avatar)
 
 
