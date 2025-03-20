@@ -7,7 +7,7 @@ import { View } from 'react-native'
 import { BrandTypes, brands } from '../../common/brandTypes';
 
 const description = ` [Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/5475631142/Figma+gayaBadge) 
-> Badge is a visual indicator for numeric values.
+
 
 
 
