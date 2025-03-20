@@ -8,8 +8,8 @@ import type { Meta, StoryFn, StoryObj } from '@storybook/react';
 
 
 
-const description = `
-> Typography component for displaying text.
+const description = ` [Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/5473928151/Figma+gayaTypography) 
+
 
 
 ## Props
