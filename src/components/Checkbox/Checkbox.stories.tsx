@@ -13,7 +13,7 @@ import { View } from 'react-native';
  * Descrição que antes ficava na função `description`.
  * Agora podemos colocar em `parameters.docs.description.component`
  */
-const componentDescription = `
+const componentDescription = ` [Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/5398626404/Figma+gayaCheckbox#Props)
 > Checkbox selection controls allow the user to select options.
 
 
