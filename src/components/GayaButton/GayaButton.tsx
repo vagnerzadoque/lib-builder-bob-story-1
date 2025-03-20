@@ -7,20 +7,35 @@ import { GayaTouchableRippleBase } from '../GayaTouchableRipple/GayaTouchableRip
 import { GayaButtonProps, GayaButtonBaseProps } from './GayaButton.props';
 import { buildTheme } from '../../common/theme';
 
-export const GayaButtonBase = ({
-  brand,
-  color = 'primary',
-  disabled = false,
-  iconName,
-  iconPosition = 'right',
-  internal,
-  mode,
-  onPress,
-  size = 'medium',
-  text,
-  textTransform,
-  type = 'filled',
-}: GayaButtonBaseProps) => {
+export const gayaButtonDefaultProps: GayaButtonBaseProps = {
+  color: 'primary',
+  disabled: false,
+  iconPosition: 'right',
+  size: 'medium',
+  type: 'filled',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onPress: () => {},
+  text: '',
+};
+
+export const GayaButtonBase = (props: GayaButtonBaseProps) => {
+  const {
+    brand,
+    color,
+    disabled = false,
+    iconName,
+    iconPosition,
+    internal,
+    mode,
+    onPress,
+    size,
+    text,
+    textTransform,
+    type,
+  } = { ...gayaButtonDefaultProps, ...props };
+
+  if (!type || !iconPosition) return null;
+
   const ctxTheme = useTheme();
   const theme = brand ? buildTheme(brand, mode) : ctxTheme;
   const tokens = getButtonTokens({

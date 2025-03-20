@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import type { Meta, StoryObj, Decorator } from '@storybook/react';
-import { GayaButton, GayaButtonBase } from './GayaButton';
+import { GayaButton, GayaButtonBase, gayaButtonDefaultProps } from './GayaButton';
 import { GayaProvider } from '../../common/providers/GayaProvider';
 import { View } from 'react-native';
 import { BrandTypes, brands } from '../../common/brandTypes';
@@ -9,7 +9,7 @@ import { icons } from '@naturacosmeticos/natds-icons';
 
 const description = `[Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/4793008336/Componente+Button)
 
-> O GaYaButton faz parte da evolução contínua dos componentes do GaYa Design System. Lançado como um novo componente, o GaYaButton substitui o antigo Button, que permanecerá disponível para uso, mas não receberá mais atualizações ou suporte ativo. 
+> O GaYaButton faz parte da evolução contínua dos componentes do GaYa Design System. Lançado como um novo componente, o GaYaButton substitui o antigo Button, que permanecerá disponível para uso, mas não receberá mais atualizações ou suporte ativo.
 Recomendamos a migração para o GayaButton o mais rápido possível para aproveitar as melhorias e garantir a compatibilidade futura.
 
 
@@ -49,7 +49,7 @@ Recomendamos a migração para o GayaButton o mais rápido possível para aprove
   | ** Figma: icon**            | ** Stack:   iconName**          |
   |-----------------------------|---------------------------------|
   | string-name                 | string-name                     |
-    
+
   | ** Figma: disabled**        | ** Stack:   disabled**          |
   |-----------------------------|---------------------------------|
   | true                        | true                            |
@@ -67,7 +67,7 @@ Recomendamos a migração para o GayaButton o mais rápido possível para aprove
   | ** Figma: -----**           | ** Stack:   brand**             |
   |-----------------------------|---------------------------------|
   | temas disponiveis no GaYa   | temas disponiveis no GaYa       |
- 
+
 
 
 ## Exemplos de usos
@@ -106,7 +106,7 @@ const meta: Meta<typeof GayaButtonBase> = {
       options: ['left', 'right'],
     },
     textTransform: {
-    
+
       control: { type: 'radio' },
       options: ['uppercase' , 'lowercase' , 'capitalize'],
     },
@@ -148,15 +148,7 @@ export const Interactive: Story = {
       },
     },
   },
-  args: {
-    color: 'primary',
-    disabled: false,
-    iconPosition: 'right',
-    onPress: () => undefined,
-    size: 'medium',
-    text: 'GaYa Button',
-    type: 'filled',
-  },
+  args: {...gayaButtonDefaultProps, text: 'GaYa Button'},
 };
 
 const withAllThemesAndTypes: Decorator = (Story, context) => {
