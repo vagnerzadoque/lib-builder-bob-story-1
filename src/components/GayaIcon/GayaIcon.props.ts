@@ -4,6 +4,8 @@ import { StyleProp, TextStyle } from 'react-native';
 import { BrandTypes } from '../../common/brandTypes';
 
 export type IconSizesType = keyof Size;
+export type IconColors = keyof Color 
+export type IconSizes = keyof Size
 
 export interface GayaIconBaseProps {
   /**
