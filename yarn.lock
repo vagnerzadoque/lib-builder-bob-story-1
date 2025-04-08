@@ -3619,21 +3619,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@naturacosmeticos/natds-icons@npm:^1.27.5":
-  version: 1.27.5
-  resolution: "@naturacosmeticos/natds-icons@npm:1.27.5"
-  checksum: b353f69dc3e35da9fa812d61f772ff0e5b3648586e6f21bd8fd23915d6e1e78d319eb56131877893414b0b0ebdbc04ca8a1721c221997ad3d75cbc18ecfe82f0
+"@naturacosmeticos/natds-icons@npm:^1.30.1":
+  version: 1.30.1
+  resolution: "@naturacosmeticos/natds-icons@npm:1.30.1"
+  checksum: 5874f16654b794fdb710012bf455786a3afc97f2f95afe6c67db1f1b6cfbb644a0be48d82fde0631c7b8b7e6fd35f1f225aa937c177d22adfa0e1f79ae8fc9c5
   languageName: node
   linkType: hard
 
-"@naturacosmeticos/natds-themes@npm:^0.82.1":
-  version: 0.82.1
-  resolution: "@naturacosmeticos/natds-themes@npm:0.82.1"
+"@naturacosmeticos/natds-themes@npm:^0.84.1":
+  version: 0.84.1
+  resolution: "@naturacosmeticos/natds-themes@npm:0.84.1"
   dependencies:
     open-color: ^1.8.0
     svg2vectordrawable: 2.6.26
     webp-converter: ^2.3.3
-  checksum: 74e4b2e91e3ec6230dd90ec5cd9c407564eab32ccd19dd56f46ea79e3ed7dd3a7248998bbbc812b998e25e03445b3e4e50342ee22d833cab7db02e1ff95c8914
+  checksum: 61241775d75f6ac9e40648f7216b3110fdffd48d492030c2e2556f3b159e9d64d1782a2e466e072479829bc3b1205ba8216af007919a3a94be26135f350a2e37
   languageName: node
   linkType: hard
 
@@ -17661,8 +17661,8 @@ __metadata:
     "@chromatic-com/storybook": ^1.9.0
     "@commitlint/config-conventional": ^17.0.2
     "@evilmartians/lefthook": ^1.5.0
-    "@naturacosmeticos/natds-icons": ^1.27.5
-    "@naturacosmeticos/natds-themes": ^0.82.1
+    "@naturacosmeticos/natds-icons": ^1.30.1
+    "@naturacosmeticos/natds-themes": ^0.84.1
     "@react-native/babel-preset": ^0.76.2
     "@react-native/eslint-config": ^0.73.1
     "@release-it/conventional-changelog": ^5.0.0
