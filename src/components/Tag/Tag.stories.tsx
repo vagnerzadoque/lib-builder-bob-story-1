@@ -7,27 +7,8 @@ import { Tag, tagPropsDefault } from './Tag'
 import { View } from 'react-native'
 import { brands, BrandTypes } from '../../common/brandTypes'
 
-const description = `
-> Tags are used to label, categorize, or organize items using keywords that describe them.
+const description = ` [Acesse a documentação completa no Confluence.](https://natura.atlassian.net/wiki/spaces/NatDS/pages/5470453911/Figma+gayaTag) 
 
-## Properties
-| Property                  | Values                                              | Status        |
-|--------------------------|-----------------------------------------------------|----------------|
-| **variant (no prop)**    | Standard                                            | ✅ Available   |
-| **accessible**           | true/false                                          | ✅ Available   |
-| **accessibilityLabel**   | string                                              | ✅ Available   |
-| **accessibilityHint**    | string                                              | ✅ Available   |
-| **accessibilityRole**    | accessibilityRole                                   | ✅ Available   |
-| **accessibilityState**   | accessibilityState                                  | ✅ Available   |
-| **allowFontScaling**     | true/false                                          | ✅ Available   |
-| **maxFontSizeMultiplier**| number                                              | ✅ Available   |
-| **text**                 | string                                              | ✅ Available   |
-| **borderPosition**       | default, left, right                                | ✅ Available   |
-| **size**                 | small, standard                                     | ✅ Available   |
-| **color**                | alert, link, primary, secondary, success, warning   | ✅ Available   |
-| **iconRight**            | icon name                                           | ✅ Available   |
-| **iconLeft**             | icon name                                           | ✅ Available   |
-| **brand**                | avon, avon_v2, natura, natura_v2, theBodyShop, consultoriaDeBeleza, casaEestilo | ✅ Available |
 `
 
 const meta: Meta<typeof Tag> = {
