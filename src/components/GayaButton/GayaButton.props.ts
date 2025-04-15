@@ -1,8 +1,17 @@
 import { IconName } from '@naturacosmeticos/natds-icons';
 import { BrandTypes } from '../../common/brandTypes';
-import { StyleProp, TextStyle } from 'react-native';
+import { StyleProp, TextStyle, AccessibilityProps } from 'react-native';
 
-export interface GayaButtonBaseProps {
+type AccessibilityButtonProps = Pick<AccessibilityProps,
+  'accessibilityActions' |
+  'onAccessibilityAction' |
+  'accessibilityHint' |
+  'accessibilityLabel'
+>
+
+export interface GayaButtonBaseProps extends AccessibilityButtonProps {
+
+
   /**
    * A disabled button is unusable and un-clickable.
    * The disabled attribute can be set to keep a user from clicking on the button until some

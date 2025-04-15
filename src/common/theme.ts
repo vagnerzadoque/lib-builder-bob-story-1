@@ -8,6 +8,7 @@ export type Brand =
   | 'aesop'
   | 'avon'
   | 'avon_v2'
+  | 'avon_v3'
   | 'biome'
   | 'natura'
   | 'theBodyShop'
