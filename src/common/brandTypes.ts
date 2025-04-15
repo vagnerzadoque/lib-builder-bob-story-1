@@ -2,6 +2,7 @@ export type BrandTypes =
   | 'aesop'
   | 'avon'
   | 'avon_v2'
+  | 'avon_v3'
   | 'biome'
   | 'natura'
   | 'theBodyShop'
@@ -18,6 +19,7 @@ export const brands = [
   { name: 'Aesop', value: 'aesop' },
   { name: 'Avon', value: 'avon' },
   { name: 'Avon-V2', value: 'avon_v2' },
+  { name: 'Avon-V3', value: 'avon_v3' },
   { name: 'Natura', value: 'natura' },
   { name: 'Natura-V2', value: 'natura_v2' },
   { name: 'Natura-V3', value: 'natura_v3' },
