@@ -57,14 +57,14 @@ export const Input = styled.TextInput<{ theme: Theme }>(({ theme }): CSSObject =
 }))
 
 
-export const RadiusButtonRight = styled.View<RadiusButtonRightProps>(({ size, theme, disabled }: RadiusButtonRightProps): CSSObject => ({
+export const RadiusButtonRight = styled.View<RadiusButtonRightProps>(({ size, theme }: RadiusButtonRightProps): CSSObject => ({
   borderTopLeftRadius: 0,
   borderBottomLeftRadius: 0,
   borderTopRightRadius: theme.counter.borderRadius,
   borderBottomRightRadius: theme.counter.borderRadius,
   borderColor: theme.color.lowEmphasis,
   alignItems: 'center',
-  backgroundColor: disabled ? theme.color.surfaceDisabled : theme.color.surface,
+  backgroundColor: theme.color.surface,
   flexDirection: 'row',
   ...getButtonStyleBySize({
     size,
@@ -76,7 +76,7 @@ export const RadiusButtonRight = styled.View<RadiusButtonRightProps>(({ size, th
      justifyContent: 'center'
 }));
 
-export const RadiusButtonLeft = styled.View<RadiusButtonRightProps>(({ size, theme, disabled }: RadiusButtonRightProps): CSSObject => ({
+export const RadiusButtonLeft = styled.View<RadiusButtonRightProps>(({ size, theme }: RadiusButtonRightProps): CSSObject => ({
   borderTopLeftRadius: theme.counter.borderRadius,
   borderBottomLeftRadius: theme.counter.borderRadius,
   borderTopRightRadius: 0,
@@ -84,7 +84,7 @@ export const RadiusButtonLeft = styled.View<RadiusButtonRightProps>(({ size, the
   borderColor: theme.color.lowEmphasis,
   height: '100%',
   alignItems: 'center',
-  backgroundColor: disabled ? theme.color.surfaceDisabled : theme.color.surface,
+  backgroundColor: theme.color.surface,
   flexDirection: 'row',
   cursor: 'pointer',
   ...getButtonStyleBySize({
