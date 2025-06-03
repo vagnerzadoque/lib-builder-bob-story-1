@@ -3,16 +3,18 @@ import React, { ReactNode } from 'react'
 import { CSSObject } from 'styled-components'
 import styled from 'styled-components/native'
 import { ContainerRow, ContainerWithTheme, TextWithTheme } from './ThemeHelper.styles'
+import { Typography } from '../../components/Typography'
 
 type RCProps = {
   children: ReactNode,
   title: string
   style?: any
+
 }
 
 export const StoryContainer = ({ children, title, ...props }: RCProps) => (
   <Container>
-    <Title>{title}</Title>
+    <Typography variant='body1' >{title}</Typography>
     <ContainerRow {...props}>
       {children}
     </ContainerRow>
@@ -51,4 +53,5 @@ const Content = styled.View``
 
 const Title = styled(TextWithTheme)`
   margin-bottom: 8px;
+  
 `

@@ -17,7 +17,7 @@ export const GayaTouchableRippleBase = ({
   const theme = useTheme();
   const getColorByName = theme.color[color];
   const getColorOpacity = theme.opacity.medium;
-  
+
   // Cor que será aplicada ao pressionar
   const pressedColor = buildColorWithOpacity(getColorByName, getColorOpacity);
 
@@ -29,7 +29,7 @@ export const GayaTouchableRippleBase = ({
         internal?.touchableHighlight?.style,
         { backgroundColor: pressed ? pressedColor : 'transparent' },
       ]}
-      
+
     >
       {children}
     </Pressable>

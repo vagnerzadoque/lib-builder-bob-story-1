@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import type { Meta, StoryObj, Decorator } from '@storybook/react';
-import { GayaButton, GayaButtonBase, gayaButtonDefaultProps } from './GayaButton';
+import {
+  GayaButton,
+  GayaButtonBase,
+  gayaButtonDefaultProps,
+} from './GayaButton';
 import { GayaProvider } from '../../common/providers/GayaProvider';
 import { View } from 'react-native';
 import { BrandTypes, brands } from '../../common/brandTypes';
@@ -99,20 +103,26 @@ const meta: Meta<typeof GayaButtonBase> = {
     },
     color: {
       control: { type: 'select' },
-      options: ['primary', 'onPrimary', 'secondary', 'onSecondary', 'neutral', 'inverse'],
+      options: [
+        'primary',
+        'onPrimary',
+        'secondary',
+        'onSecondary',
+        'neutral',
+        'inverse',
+      ],
     },
     iconPosition: {
       control: { type: 'radio' },
       options: ['left', 'right'],
     },
     textTransform: {
-
       control: { type: 'radio' },
-      options: ['uppercase' , 'lowercase' , 'capitalize'],
+      options: ['uppercase', 'lowercase', 'capitalize'],
     },
     size: {
       control: { type: 'radio' },
-      options: ['semi' , 'semiX' , 'medium'],
+      options: ['semi', 'semiX', 'medium'],
     },
     disabled: {
       control: {
@@ -121,7 +131,7 @@ const meta: Meta<typeof GayaButtonBase> = {
     },
     mode: {
       control: { type: 'radio' },
-      options: ['light' , 'dark'],
+      options: ['light', 'dark'],
     },
     iconName: {
       control: {
@@ -129,7 +139,7 @@ const meta: Meta<typeof GayaButtonBase> = {
       },
       options: Object.keys(icons),
     },
-  }
+  },
 };
 
 export default meta;
@@ -148,7 +158,12 @@ export const Interactive: Story = {
       },
     },
   },
-  args: {...gayaButtonDefaultProps, text: 'GaYa Button'},
+  args: {
+    ...gayaButtonDefaultProps,
+    text: 'GaYa Button',
+    mode: 'dark',
+    disabled: false,
+  },
 };
 
 const withAllThemesAndTypes: Decorator = (Story, context) => {

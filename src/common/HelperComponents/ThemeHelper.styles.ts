@@ -8,7 +8,7 @@ export const TextWithTheme = styled.Text`
 `
 
 export const ContainerWithTheme = styled.View`
-  background-color: ${themes.color.background};
+  /* background-color: ${themes.color.background}; */
 `
 
 export const StoriesContainer = styled.ScrollView`

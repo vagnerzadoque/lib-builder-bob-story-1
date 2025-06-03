@@ -14,7 +14,7 @@ export const gayaButtonDefaultProps: GayaButtonBaseProps = {
   size: 'medium',
   type: 'filled',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onPress: () => {},
+  onPress: () => { },
   text: '',
 };
 
